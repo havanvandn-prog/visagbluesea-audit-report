@@ -162,21 +162,21 @@ html_content = """<!DOCTYPE html>
       <a href="#diem-nghen-chuyen-doi" class="rail-btn relative p-2.5 rounded-xl text-slate-600 hover:text-red-600 hover:bg-slate-50 transition-colors group flex items-center justify-center" title="Điểm Nghẽn Thất Thoát">
         <i data-lucide="alert-octagon" class="w-5 h-5 text-red-500"></i>
         <span class="absolute left-full ml-3 px-2.5 py-1 bg-slate-900 text-white text-[11px] font-semibold rounded-md shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
-          2. Điểm Nghẽn Thất Thoát (P0)
+          2. Điểm Nghẽn Thất Thoát (5 P0)
         </span>
       </a>
 
       <a href="#doi-sanh-truoc-sau" class="rail-btn relative p-2.5 rounded-xl text-slate-600 hover:text-emerald-600 hover:bg-slate-50 transition-colors group flex items-center justify-center" title="Đối Sánh Trước & Sau">
         <i data-lucide="split-square-vertical" class="w-5 h-5 text-emerald-600"></i>
         <span class="absolute left-full ml-3 px-2.5 py-1 bg-slate-900 text-white text-[11px] font-semibold rounded-md shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
-          3. Đối Sánh Trước & Sau
+          3. Đối Sánh Trước & Sau (2 Cặp)
         </span>
       </a>
 
       <a href="#bang-uu-tien-p0-p3" class="rail-btn relative p-2.5 rounded-xl text-slate-600 hover:text-amber-600 hover:bg-slate-50 transition-colors group flex items-center justify-center" title="Bảng Khuyến Nghị Ưu Tiên">
         <i data-lucide="check-square" class="w-5 h-5 text-amber-500"></i>
         <span class="absolute left-full ml-3 px-2.5 py-1 bg-slate-900 text-white text-[11px] font-semibold rounded-md shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
-          4. Bảng Ưu Tiên Xử Lý (14 Mục)
+          4. Bảng Ưu Tiên Xử Lý (10 Mục)
         </span>
       </a>
 
@@ -221,15 +221,15 @@ html_content = """<!DOCTYPE html>
         </a>
         <a href="#diem-nghen-chuyen-doi" class="nav-sub-item flex items-center justify-between px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-50 transition-colors gap-2">
           <span class="whitespace-nowrap font-medium text-slate-800 text-xs">2. Điểm Nghẽn Thất Thoát</span>
-          <span class="text-[10px] bg-red-100 text-red-800 font-bold px-2 py-0.5 rounded whitespace-nowrap shrink-0">6 P0</span>
+          <span class="text-[10px] bg-red-100 text-red-800 font-bold px-2 py-0.5 rounded whitespace-nowrap shrink-0">5 P0</span>
         </a>
         <a href="#doi-sanh-truoc-sau" class="nav-sub-item flex items-center justify-between px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-50 transition-colors gap-2">
           <span class="whitespace-nowrap font-medium text-slate-800 text-xs">3. Đối Sánh Trước/Sau</span>
-          <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded whitespace-nowrap shrink-0">3 Cặp</span>
+          <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded whitespace-nowrap shrink-0">2 Cặp</span>
         </a>
         <a href="#bang-uu-tien-p0-p3" class="nav-sub-item flex items-center justify-between px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-50 transition-colors gap-2">
           <span class="whitespace-nowrap font-medium text-slate-800 text-xs">4. Bảng Ưu Tiên Xử Lý</span>
-          <span class="text-[10px] bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded whitespace-nowrap shrink-0">14 Mục</span>
+          <span class="text-[10px] bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded whitespace-nowrap shrink-0">10 Mục</span>
         </a>
         <a href="#kien-truc-sitemap" class="nav-sub-item flex items-center justify-between px-3 py-2.5 rounded-lg text-slate-700 hover:bg-slate-50 transition-colors gap-2">
           <span class="whitespace-nowrap font-medium text-slate-800 text-xs">5. Sitemap & RFQ Hub</span>
@@ -301,7 +301,7 @@ html_content = """<!DOCTYPE html>
               <span class="text-[11px] font-semibold uppercase tracking-wider">Lỗi Chặn P0 (Khẩn)</span>
               <i data-lucide="alert-triangle" class="w-4 h-4 text-red-600"></i>
             </div>
-            <span class="text-2xl sm:text-3xl font-black text-red-600 block">6 Điểm Nghẽn</span>
+            <span class="text-2xl sm:text-3xl font-black text-red-600 block">5 Điểm Nghẽn</span>
             <span class="text-[11px] text-slate-500 mt-1 block">Cần sửa ngay trong 48h</span>
           </div>
 
@@ -341,13 +341,13 @@ html_content = """<!DOCTYPE html>
           <!-- Interactive Filter Tabs -->
           <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1">
             <button onclick="filterFindings('all', this)" class="filter-pill active px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 bg-white text-slate-700 whitespace-nowrap shrink-0 transition-colors">
-              Tất Cả (6)
+              Tất Cả (5)
             </button>
             <button onclick="filterFindings('ui', this)" class="filter-pill px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 bg-white text-slate-700 whitespace-nowrap shrink-0 transition-colors">
               Giao Diện & Mobile (4)
             </button>
-            <button onclick="filterFindings('tech', this)" class="filter-pill px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 bg-white text-slate-700 whitespace-nowrap shrink-0 transition-colors">
-              SEO & Tracking (2)
+            <button onclick="filterFindings('trk', this)" class="filter-pill px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 bg-white text-slate-700 whitespace-nowrap shrink-0 transition-colors">
+              Hạ Tầng Đo Lường (1)
             </button>
           </div>
         </div>
@@ -442,30 +442,8 @@ html_content = """<!DOCTYPE html>
             </div>
           </div>
 
-          <!-- Card 5: Missing H1 Golden Visa -->
-          <div class="finding-card bg-white p-4 sm:p-5 rounded-xl border border-slate-200 shadow-2xs space-y-3" data-cat="tech,seo">
-            <div class="flex items-start justify-between gap-3">
-              <div class="flex items-center gap-2">
-                <span class="badge-p0 text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap shrink-0">P0 Khẩn Cấp</span>
-                <h3 class="text-sm sm:text-base font-bold text-slate-900">Trang Định Cư Châu Âu Golden Visa Khuyết Hoàn Toàn Thẻ H1</h3>
-              </div>
-              <a href="https://www.visagbluesea.com/eu-golden-visa" target="_blank" class="inline-flex items-center gap-1 text-xs text-emerald-600 hover:text-emerald-700 font-semibold underline whitespace-nowrap shrink-0">
-                <span>Soi trang Golden Visa</span> <i data-lucide="external-link" class="w-3.5 h-3.5 shrink-0"></i>
-              </a>
-            </div>
-            <div class="text-xs sm:text-sm text-slate-600 space-y-1">
-              <p><strong>Vấn đề:</strong> Trang Châu Âu Golden Visa hoàn toàn không có tiêu đề chính (thẻ H1).</p>
-              <p><strong>Ảnh hưởng:</strong> Google đánh giá chất lượng trang thấp, làm tăng 30% chi phí trên mỗi lượt nhấp chuột.</p>
-              <p><strong>Cách xử lý:</strong> Bổ sung tiêu đề chính: "Chương Trình Golden Visa Châu Âu: Định Cư Hy Lạp & Síp 2026".</p>
-            </div>
-            <div class="bg-slate-50 p-2.5 sm:p-3 rounded-lg text-xs text-slate-700 flex flex-col sm:flex-row sm:items-center justify-between gap-2 border border-slate-200">
-              <span class="flex items-start gap-1.5"><i data-lucide="search" class="w-3.5 h-3.5 text-slate-500 shrink-0 mt-0.5"></i> Bấm Ctrl+U tìm kiếm thẻ &lt;h1&gt; trả về 0 kết quả.</span>
-              <span class="text-red-600 font-bold whitespace-nowrap">Đội giá thầu Ads: +30%</span>
-            </div>
-          </div>
-
-          <!-- Card 6: Tracking Missing -->
-          <div class="finding-card bg-white p-4 sm:p-5 rounded-xl border border-slate-200 shadow-2xs space-y-3" data-cat="tech,tracking">
+          <!-- Card 5: Tracking Missing -->
+          <div class="finding-card bg-white p-4 sm:p-5 rounded-xl border border-slate-200 shadow-2xs space-y-3" data-cat="trk">
             <div class="flex items-start justify-between gap-3">
               <div class="flex items-center gap-2">
                 <span class="badge-p0 text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap shrink-0">P0 Khẩn Cấp</span>
@@ -619,26 +597,7 @@ html_content = """<!DOCTYPE html>
           </div>
         </div>
 
-        <!-- Cặp 3: Bằng chứng lỗi SEO Panel Extension -->
-        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-2xs p-4 sm:p-6 space-y-4">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 pb-3">
-            <div>
-              <span class="text-[11px] font-bold text-red-600 uppercase tracking-wider block">Bằng Chứng Kiểm Định Công Cụ Độc Lập</span>
-              <h3 class="text-sm sm:text-base font-bold text-slate-900">Bảng Soi Lỗi Tiêu Đề H1 & Cảnh Báo Kỹ Thuật (SEO Pro Extension)</h3>
-            </div>
-            <span class="text-xs text-slate-500">Đối chiếu mã nguồn HTML</span>
-          </div>
-
-          <div class="border border-slate-200 rounded-xl overflow-hidden relative group cursor-pointer" onclick="openLightbox('Bang_Chung_Hinh_Anh/bang_chung_detailed_seo_panel.png', 'Bằng chứng trích xuất từ công cụ kiểm định Detailed SEO: 2 thẻ H1 trên trang chủ, lỗi Acerca de trên EB-5 và sitemap rác')">
-            <img src="Bang_Chung_Hinh_Anh/bang_chung_detailed_seo_panel.png" alt="Bằng chứng Detailed SEO Extension" class="w-full h-auto object-contain group-hover:scale-[1.01] transition-transform duration-300">
-            <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-bold gap-1.5 backdrop-blur-xs">
-              <i data-lucide="maximize-2" class="w-4 h-4"></i>
-              <span>Nhấp để phóng to ảnh kích thước đầy đủ</span>
-            </div>
-          </div>
-        </div>
-
-      </section>
+        </section>
 
       <!-- ================= SECTION 4: BẢNG ƯU TIÊN XỬ LÝ (DESKTOP TABLE + MOBILE CARDS) ================= -->
       <section id="bang-uu-tien-p0-p3" class="space-y-6">
@@ -715,14 +674,6 @@ html_content = """<!DOCTYPE html>
                 <td class="p-3 whitespace-nowrap"><a href="https://www.visagbluesea.com/contact-us" target="_blank" class="text-emerald-600 hover:underline font-medium inline-flex items-center gap-1">Trang Form <i data-lucide="external-link" class="w-3 h-3"></i></a></td>
               </tr>
               <tr class="table-row-item hover:bg-slate-50" data-prio="P0">
-                <td class="p-3 font-mono font-bold text-slate-900 whitespace-nowrap">F-SEO-01</td>
-                <td class="p-3 font-semibold text-slate-900">Trang Golden Visa khuyết H1</td>
-                <td class="p-3 text-slate-600">Trang đích hoàn toàn không có thẻ tiêu đề chính H1</td>
-                <td class="p-3 text-slate-800">Thêm H1: "Chương Trình Golden Visa Định Cư Hy Lạp & Síp"</td>
-                <td class="p-3"><span class="badge-p0 text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap">P0 (Khẩn)</span></td>
-                <td class="p-3 whitespace-nowrap"><a href="https://www.visagbluesea.com/eu-golden-visa" target="_blank" class="text-emerald-600 hover:underline font-medium inline-flex items-center gap-1">Trang EU Visa <i data-lucide="external-link" class="w-3 h-3"></i></a></td>
-              </tr>
-              <tr class="table-row-item hover:bg-slate-50" data-prio="P0">
                 <td class="p-3 font-mono font-bold text-slate-900 whitespace-nowrap">F-TRK-01</td>
                 <td class="p-3 font-semibold text-slate-900">Chưa gắn thẻ đo lường Google Ads</td>
                 <td class="p-3 text-slate-600">GTM chưa cấu hình ghi nhận chuyển đổi lượt gọi và gửi form</td>
@@ -747,14 +698,6 @@ html_content = """<!DOCTYPE html>
                 <td class="p-3 whitespace-nowrap"><a href="https://www.visagbluesea.com/" target="_blank" class="text-emerald-600 hover:underline font-medium inline-flex items-center gap-1">Trang chủ <i data-lucide="external-link" class="w-3 h-3"></i></a></td>
               </tr>
               <tr class="table-row-item hover:bg-slate-50" data-prio="P1">
-                <td class="p-3 font-mono font-bold text-slate-900 whitespace-nowrap">F-SEO-02</td>
-                <td class="p-3 font-semibold text-slate-900">URL nhân bản rác lọt sitemap</td>
-                <td class="p-3 text-slate-600">Trang /copy-of-malta-investment-visa-1 làm loãng uy tín</td>
-                <td class="p-3 text-slate-800">Chuyển hướng 301 về trang chính hoặc xóa bỏ khỏi Wix</td>
-                <td class="p-3"><span class="badge-p1 text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap">P1 (Cao)</span></td>
-                <td class="p-3 whitespace-nowrap"><a href="https://www.visagbluesea.com/copy-of-malta-investment-visa-1" target="_blank" class="text-emerald-600 hover:underline font-medium inline-flex items-center gap-1">Trang rác <i data-lucide="external-link" class="w-3 h-3"></i></a></td>
-              </tr>
-              <tr class="table-row-item hover:bg-slate-50" data-prio="P1">
                 <td class="p-3 font-mono font-bold text-slate-900 whitespace-nowrap">F-CRO-01</td>
                 <td class="p-3 font-semibold text-slate-900">Thiếu Trung Tâm Báo Phí RFQ Hub</td>
                 <td class="p-3 text-slate-600">Trang chi tiết chỉ có bài viết dài, thiếu bảng dự toán BOQ</td>
@@ -765,26 +708,10 @@ html_content = """<!DOCTYPE html>
               <tr class="table-row-item hover:bg-slate-50" data-prio="P1">
                 <td class="p-3 font-mono font-bold text-slate-900 whitespace-nowrap">F-TEC-01</td>
                 <td class="p-3 font-semibold text-slate-900">Mã nguồn Wix nặng 1.22 MB</td>
-                <td class="p-3 text-slate-600">HTML tĩnh chiếm 61% giới hạn 2MB cào của Googlebot</td>
-                <td class="p-3 text-slate-800">Tắt các widget Wix không dùng, nén toàn bộ ảnh sang WebP</td>
+                <td class="p-3 text-slate-600">Mã nguồn nặng làm chậm tốc độ tải trang trên điện thoại, ảnh hưởng điểm trang đích Google Ads</td>
+                <td class="p-3 text-slate-800">Tắt các widget thừa, nén ảnh WebP để tăng tốc độ trang đích dưới 2.5 giây</td>
                 <td class="p-3"><span class="badge-p1 text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap">P1 (Cao)</span></td>
                 <td class="p-3 whitespace-nowrap"><span class="text-slate-400">Toàn site</span></td>
-              </tr>
-              <tr class="table-row-item hover:bg-slate-50" data-prio="P2">
-                <td class="p-3 font-mono font-bold text-slate-900 whitespace-nowrap">F-SEO-03</td>
-                <td class="p-3 font-semibold text-slate-900">Trang chủ bị gán 2 thẻ H1</td>
-                <td class="p-3 text-slate-600">Một đoạn văn dài 4 dòng bị gán nhầm thẻ H1 thứ hai</td>
-                <td class="p-3 text-slate-800">Đổi đoạn văn thành thẻ &lt;p&gt;, giữ duy nhất 1 thẻ H1</td>
-                <td class="p-3"><span class="badge-p2 text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap">P2 (TB)</span></td>
-                <td class="p-3 whitespace-nowrap"><a href="https://www.visagbluesea.com/" target="_blank" class="text-emerald-600 hover:underline font-medium inline-flex items-center gap-1">Trang chủ <i data-lucide="external-link" class="w-3 h-3"></i></a></td>
-              </tr>
-              <tr class="table-row-item hover:bg-slate-50" data-prio="P2">
-                <td class="p-3 font-mono font-bold text-slate-900 whitespace-nowrap">F-SEO-04</td>
-                <td class="p-3 font-semibold text-slate-900">Thiếu Schema Doanh Nghiệp & Dịch Vụ</td>
-                <td class="p-3 text-slate-600">Website chỉ có 2 thẻ WebSite sơ sài, thiếu LegalService</td>
-                <td class="p-3 text-slate-800">Bổ sung khối Schema JSON-LD LegalService + NAP 5 văn phòng</td>
-                <td class="p-3"><span class="badge-p2 text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap">P2 (TB)</span></td>
-                <td class="p-3 whitespace-nowrap"><span class="text-slate-400">Head Tag</span></td>
               </tr>
               <tr class="table-row-item hover:bg-slate-50" data-prio="P2">
                 <td class="p-3 font-mono font-bold text-slate-900 whitespace-nowrap">F-UI-07</td>
@@ -856,19 +783,7 @@ html_content = """<!DOCTYPE html>
             </div>
           </div>
 
-          <!-- Card 5 -->
-          <div class="mobile-card-item bg-white p-3.5 rounded-xl border border-slate-200 shadow-2xs space-y-2" data-prio="P0">
-            <div class="flex items-center justify-between">
-              <span class="font-mono font-bold text-xs text-slate-900">F-SEO-01</span>
-              <span class="badge-p0 text-[10px] font-bold px-2 py-0.5 rounded">P0 Khẩn Cấp</span>
-            </div>
-            <h4 class="font-bold text-xs text-slate-900">Trang Golden Visa khuyết thẻ H1</h4>
-            <p class="text-[11px] text-slate-600 leading-relaxed"><strong>Khắc phục:</strong> Thêm H1: "Chương Trình Golden Visa Định Cư Hy Lạp & Síp 2026".</p>
-            <div class="pt-1 flex items-center justify-between border-t border-slate-100">
-              <span class="text-[10px] text-slate-400">Trang EU Visa</span>
-              <a href="https://www.visagbluesea.com/eu-golden-visa" target="_blank" class="text-emerald-600 text-xs font-semibold inline-flex items-center gap-1">Soi lỗi ↗</a>
-            </div>
-          </div>
+          
 
           <!-- Card 6 -->
           <div class="mobile-card-item bg-white p-3.5 rounded-xl border border-slate-200 shadow-2xs space-y-2" data-prio="P0">
@@ -900,7 +815,7 @@ html_content = """<!DOCTYPE html>
         <div class="bg-indigo-50/70 border border-indigo-200 rounded-xl p-4 sm:p-5 space-y-3">
           <h3 class="text-sm font-bold text-indigo-950 flex items-center gap-2">
             <i data-lucide="info" class="w-4 h-4 text-indigo-600 shrink-0"></i>
-            Tư Vấn Tối Ưu Chi Phí Thiết Kế Website: Phân Biệt Landing Page vs Bài Viết Chuẩn SEO
+            Tư Vấn Tối Ưu Chi Phí Thiết Kế Website: Phân Biệt Landing Page Chốt Đơn vs Bài Viết Thông Tin CMS
           </h3>
           <p class="text-xs sm:text-sm text-indigo-900 leading-relaxed">
             Để tiết kiệm chi phí xây dựng website mà vẫn đạt hiệu quả chốt đơn tối đa, doanh nghiệp nên phân tách 2 loại trang rõ rệt:
@@ -911,8 +826,8 @@ html_content = """<!DOCTYPE html>
               <p class="text-xs text-slate-600 leading-relaxed">Gồm: <strong>Trang Chủ, RFQ Hub Báo Giá, Trang Định Cư EB-5, Golden Visa</strong>. Đây là các trang đón tiếp khách quảng cáo, cần thiết kế tỉ mỉ từng khối để tăng tối đa cuộc gọi.</p>
             </div>
             <div class="bg-white p-3.5 rounded-lg border border-indigo-100 shadow-2xs">
-              <span class="text-xs font-bold text-blue-700 uppercase tracking-wider block mb-1">2. Nhóm Bài Viết Chuẩn SEO (Tin Tức CMS)</span>
-              <p class="text-xs text-slate-600 leading-relaxed">Gồm: <strong>79 bài viết cẩm nang du học, học bổng, thay đổi luật visa</strong>. Chỉ cần lập trình 01 khung mẫu chuẩn SEO duy nhất, nhân sự tự đăng bài giúp <strong>tiết kiệm 60% chi phí lập trình</strong>.</p>
+              <span class="text-xs font-bold text-blue-700 uppercase tracking-wider block mb-1">2. Nhóm Bài Viết Thông Tin & Cẩm Nang (CMS Post)</span>
+              <p class="text-xs text-slate-600 leading-relaxed">Gồm: <strong>79 bài viết cẩm nang du học, học bổng, thay đổi luật visa</strong>. Chỉ cần lập trình 01 khung mẫu nội dung CMS duy nhất, nhân sự tự đăng bài giúp <strong>tiết kiệm 60% chi phí lập trình</strong>.</p>
             </div>
           </div>
         </div>
