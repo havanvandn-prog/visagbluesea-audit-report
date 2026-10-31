@@ -246,16 +246,7 @@ html_content = """<!DOCTYPE html>
         </nav>
       </div>
 
-      <!-- Thẩm định độc lập card -->
-      <div class="mt-auto bg-white rounded-xl p-3.5 border border-slate-200/80 shadow-2xs space-y-2">
-        <div class="flex items-center gap-2 text-slate-900 font-bold text-xs">
-          <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600 shrink-0"></i>
-          <span>Thẩm Định Độc Lập</span>
-        </div>
-        <p class="text-[11px] text-slate-500 leading-relaxed">
-          Tài liệu đánh giá kỹ thuật trung lập gửi Ban Giám Đốc trước khi duyệt ngân sách quảng cáo.
-        </p>
-      </div>
+
     </aside>
 
     <!-- 3. MAIN WORKSPACE (Max-width 1280px Grid 70/30 - Offset for Fixed Sidebars) -->
