@@ -982,57 +982,7 @@ html_content = """<!DOCTYPE html>
           </div>
         </div>
 
-        <!-- Bảng ánh xạ URL Cũ sang Mới -->
-        <div class="overflow-x-auto bg-white rounded-xl border border-slate-200 shadow-2xs">
-          <div class="p-3.5 bg-slate-100 border-b border-slate-200 font-bold text-xs text-slate-800 flex items-center justify-between">
-            <span>Ma Trận Xử Lý & Chuẩn Hóa Đường Dẫn (URL Mapping Matrix)</span>
-            <span class="text-[10px] text-slate-400 font-normal md:hidden">← Cuộn ngang để xem đủ →</span>
-          </div>
-          <div class="overflow-x-auto no-scrollbar">
-            <table class="w-full text-left border-collapse text-xs min-w-[600px]">
-            <thead>
-              <tr class="bg-slate-50 border-b border-slate-200 text-slate-700 font-bold">
-                <th class="p-3">Đường Dẫn Cũ</th>
-                <th class="p-3">Hành Động Kỹ Thuật</th>
-                <th class="p-3">Đường Dẫn Chuẩn Mới</th>
-                <th class="p-3">Mục Tiêu Chuyển Đổi</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-slate-200 text-slate-700">
-              <tr>
-                <td class="p-3 font-mono text-slate-600">/us-green-card-eb-5</td>
-                <td class="p-3 font-semibold text-emerald-700">Giữ nguyên hoặc 301</td>
-                <td class="p-3 font-mono text-slate-900">/dinh-cu-my-eb5</td>
-                <td class="p-3">Điền form nhận lộ trình tài chính EB-5</td>
-              </tr>
-              <tr>
-                <td class="p-3 font-mono text-slate-600">/eu-golden-visa vs /eu-golden-visas</td>
-                <td class="p-3 font-semibold text-amber-700">Gộp 301 về 1 trang</td>
-                <td class="p-3 font-mono text-slate-900">/golden-visa-chau-au</td>
-                <td class="p-3">Tải cẩm nang so sánh thuế Síp vs Hy Lạp</td>
-              </tr>
-              <tr>
-                <td class="p-3 font-mono text-slate-600">/golden-visa-greece & /greece-investment-visa</td>
-                <td class="p-3 font-semibold text-amber-700">301 Redirect trang trùng</td>
-                <td class="p-3 font-mono text-slate-900">/golden-visa-hy-lap</td>
-                <td class="p-3">Đăng ký xem danh mục dự án BĐS Hy Lạp</td>
-              </tr>
-              <tr>
-                <td class="p-3 font-mono text-slate-600">/copy-of-malta-investment-visa-1</td>
-                <td class="p-3 font-semibold text-red-700">Xóa bỏ trang rác</td>
-                <td class="p-3 font-mono text-slate-400">HTTP 410 Gone / 301 /malta</td>
-                <td class="p-3">Triệt tiêu lỗi sitemap</td>
-              </tr>
-              <tr>
-                <td class="p-3 font-mono text-slate-600">(Chưa có)</td>
-                <td class="p-3 font-semibold text-blue-700">Xây dựng trang mới</td>
-                <td class="p-3 font-mono text-slate-900">/trung-tam-bao-gia-rfq</td>
-                <td class="p-3">Tải bảng dự toán chi phí trọn gói PDF</td>
-              </tr>
-            </tbody>
-          </table>
-          </div>
-        </div>
+        
       </section>
 
       <!-- ================= SECTION 6: BLUEPRINT SECTIONS TRANG LÕI ================= -->
