@@ -187,14 +187,7 @@ html_content = """<!DOCTYPE html>
             <span class="px-2 py-0.5 text-xs font-bold rounded-md bg-blue-100 text-blue-800 whitespace-nowrap shrink-0">7 Khối</span>
           </a>
 
-          <!-- Mục 6 -->
-          <a href="#luu-y-google-ads" class="sidebar-nav-item flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-semibold text-slate-700 hover:bg-white hover:shadow-2xs transition-all">
-            <span class="flex items-center gap-2.5 truncate">
-              <i data-lucide="target" class="w-4 h-4 text-emerald-600 shrink-0"></i>
-              <span class="truncate">6. Lưu Ý Google Ads</span>
-            </span>
-            <span class="px-2 py-0.5 text-xs font-bold rounded-md bg-emerald-100 text-emerald-800 whitespace-nowrap shrink-0">4 Trụ Cột</span>
-          </a>
+
         </nav>
       </div>
     </aside>
@@ -1055,72 +1048,7 @@ html_content = """<!DOCTYPE html>
         </div>
       </section>
 
-      <!-- ================= SECTION 7: LƯU Ý GOOGLE ADS (Ở ĐÁY THEO QUY CHUẨN) ================= -->
-      <section id="luu-y-google-ads" class="space-y-6 pt-6 border-t-2 border-slate-300">
-        <div class="border-b border-slate-200 pb-3">
-          <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700 mb-2">
-            <i data-lucide="info" class="w-3.5 h-3.5 text-slate-600"></i>
-            <span>Phần Mở Rộng Kỹ Thuật (Đặt Ở Đáy Báo Cáo)</span>
-          </div>
-          <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
-            6. Khuyến Nghị Vận Hành Chiến Dịch Google Search Ads
-          </h2>
-          <p class="text-slate-500 text-xs sm:text-sm mt-0.5">Các lưu ý quan trọng giúp doanh nghiệp kiểm soát ngân sách và tránh lãng phí tiền quảng cáo.</p>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2 shadow-2xs">
-            <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
-              Phân Nhóm Từ Khóa Theo Từng Quốc Gia
-            </h4>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              Tách riêng nhóm quảng cáo Mỹ EB-5, Hy Lạp và Du học Úc. Tuyệt đối không gom chung vào 1 nhóm để tránh làm giảm điểm chất lượng quảng cáo.
-            </p>
-          </div>
-
-          <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2 shadow-2xs">
-            <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
-              Chặn Ngay Các Từ Khóa Không Tạo Ra Khách
-            </h4>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              Thêm danh sách từ khóa phủ định để chặn các lượt bấm tốn tiền nhưng không sinh đơn: "miễn phí", "kinh nghiệm tự làm", "diễn đàn", "lừa đảo", "việc làm chui".
-            </p>
-          </div>
-
-          <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2 shadow-2xs">
-            <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
-              Chỉ Tính Chuyển Đổi Khi Có Khách Gọi Thật
-            </h4>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              Cài đặt đo lường chính xác các lượt bấm gọi hotline và gửi thông tin tư vấn. Giúp hệ thống quảng cáo tự động tìm kiếm đúng người có nhu cầu thực.
-            </p>
-          </div>
-
-          <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2 shadow-2xs">
-            <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
-              Chỉ Chạy Quảng Cáo Khi Đã Sửa Xong Web
-            </h4>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              Ưu tiên sửa xong 6 lỗi khẩn cấp P0 (chữ Acerca de, nút gọi điện thoại và đo lường) trước khi đổ tiền chạy quảng cáo để tránh lãng phí ngân sách.
-            </p>
-          </div>
-        </div>
-
-        <div class="p-4 bg-emerald-50 rounded-xl border border-emerald-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div>
-            <span class="font-bold text-xs sm:text-sm text-emerald-950 block">Dữ Liệu Hành Động Đã Sẵn Sàng Triển Khai</span>
-            <span class="text-xs text-emerald-800">Toàn bộ 14 đầu việc kỹ thuật chi tiết đã được đóng gói trong file Excel đính kèm.</span>
-          </div>
-          <a href="Du_Lieu_Trien_Khai_Chi_Tiet_visagbluesea.com.xlsx" download class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-lg shadow-sm whitespace-nowrap shrink-0 flex items-center justify-center gap-1.5 min-h-[38px]">
-            <i data-lucide="download" class="w-4 h-4"></i>
-            <span>Tải Excel 6 Sheets</span>
-          </a>
-        </div>
-      </section>
+      
 
       <div class="h-16 md:hidden"></div> <!-- Spacer for mobile floating nav -->
     </main>
