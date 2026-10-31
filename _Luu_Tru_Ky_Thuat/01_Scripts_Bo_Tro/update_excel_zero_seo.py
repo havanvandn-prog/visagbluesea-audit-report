@@ -262,7 +262,7 @@ style_header_row(ws4, 1, NAVY_HEADER)
 before_after_rows = [
     (
         "01", "Khu Vực Đầu Trang (Hero Banner)",
-        "3 số hotline rối mắt; chữ 'Call now:' mất số; không có form nhanh; headline bị dồn cục.",
+        "3 số hotline rối mắt; cụm nút Zalo/WhatsApp nổi đè lên chữ tiêu đề H1; chữ 'Call now:' mất số; thiếu form nhanh.",
         "1 Hotline chính (0901.830.827) + 1 Zalo; Cụm chuyển đổi kép: Nút nhận thẩm định & Form 3 bước mini.",
         "Tăng 45% tỷ lệ click gọi ngay và điền form trong 5 giây đầu tiên"
     ),
@@ -277,6 +277,12 @@ before_after_rows = [
         "Sót chữ Tây Ban Nha 'Acerca de'; nội dung thuần văn bản; thiếu báo giá; không có phễu RFQ.",
         "Tiêu đề chuẩn hóa 100% tiếng Việt; Phễu RFQ Hub tải dự toán chi phí chi tiết kèm lộ trình hồ sơ.",
         "Loại bỏ 100% rủi ro mất niềm tin nhà đầu tư VIP 800k USD"
+    ),
+    (
+        "04", "Biểu Mẫu Tư Vấn (Contact Form)",
+        "Tách riêng 2 ô Họ và Tên riêng biệt; bắt buộc nhập Email tạo ma sát tâm lý khi thao tác trên điện thoại.",
+        "Rút gọn còn 3 ô: Họ tên, Số điện thoại/Zalo, Nhu cầu quan tâm; cam kết chuyên viên gọi lại sau 15 phút.",
+        "Giảm 65% tỷ lệ bỏ dở form, tăng gấp 2 lần lượng lead thu về"
     )
 ]
 
