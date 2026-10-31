@@ -1,0 +1,1262 @@
+import sys
+import os
+
+sys.stdout.reconfigure(encoding='utf-8')
+
+html_content = """<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Báo Cáo Thẩm Định Toàn Diện & Năng Lực Chuyển Đổi Website — visagbluesea.com</title>
+  
+  <!-- 1. Google Fonts Inter 100% chuẩn Quốc Tế Easy AI -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- 2. Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- 3. Tailwind CSS CDN with Easy AI Design Tokens -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              DEFAULT: '#01a915', // Brand Green Easy AI
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+            },
+            subprimary: '#3b82f6', // Electric Blue
+            border: '#e2e8f0',
+            slate: {
+              850: '#0f172a',
+              900: '#0b1120',
+              950: '#020617'
+            }
+          },
+          boxShadow: {
+            '2xs': '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+            'card': '0 1px 3px 0 rgba(0, 0, 0, 0.07), 0 1px 2px 0 rgba(0, 0, 0, 0.04)',
+            'popover': '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * { font-family: 'Inter', sans-serif !important; }
+    html, body {
+      overflow-x: hidden !important;
+      max-width: 100vw;
+      width: 100%;
+      background-color: #f8fafc;
+      color: #0f172a;
+      font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11', 'tnum';
+    }
+    
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    
+    .rail-btn.active {
+      background-color: #ecfdf5;
+      color: #01a915;
+    }
+    .rail-btn.active::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      bottom: 6px;
+      width: 3px;
+      background-color: #01a915;
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+    }
+    
+    .nav-sub-item.active {
+      background-color: #ecfdf5;
+      color: #01a915;
+      font-weight: 700;
+    }
+
+    .badge-p0 { background-color: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
+    .badge-p1 { background-color: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
+    .badge-p2 { background-color: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; }
+
+    .filter-pill.active {
+      background-color: #01a915;
+      color: #ffffff;
+      border-color: #01a915;
+    }
+    .table-filter-btn.active {
+      background-color: #0f172a;
+      color: #ffffff;
+      border-color: #0f172a;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased relative pb-20 lg:pb-0">
+
+  <!-- ================= TOPBAR (56px h-14 Chuẩn Easy AI) ================= -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 h-14 flex items-center justify-between px-3 sm:px-6 shadow-2xs">
+    
+    <!-- Left: Brand & Live Status -->
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-600 to-emerald-400 flex items-center justify-center text-white font-extrabold text-sm shadow-sm shrink-0">
+        GB
+      </div>
+      <div class="flex items-center gap-2.5">
+        <div>
+          <span class="font-extrabold text-slate-900 text-xs sm:text-sm tracking-tight block">GBlueSea Audit Portal</span>
+          <span class="text-[11px] text-slate-500 hidden sm:inline">Đối soát: <a href="https://www.visagbluesea.com/" target="_blank" class="text-emerald-600 hover:underline font-medium">visagbluesea.com ↗</a></span>
+        </div>
+        <div class="hidden md:flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-[11px] font-bold text-emerald-700 whitespace-nowrap shrink-0">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          <span>Thẩm Định Độc Lập 2026</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Action Buttons -->
+    <div class="flex items-center gap-2 sm:gap-3">
+      <a href="Du_Lieu_Trien_Khai_Chi_Tiet_visagbluesea.com.xlsx" download class="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-lg bg-[#01a915] hover:bg-[#018a12] text-white text-xs font-bold transition-all shadow-sm shadow-emerald-600/20 whitespace-nowrap shrink-0 min-h-[36px] sm:min-h-[38px]">
+        <i data-lucide="file-spreadsheet" class="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0"></i>
+        <span>Tải File Excel 6 Sheets</span>
+      </a>
+      <a href="Bao_Cao_Ky_Thuat_Noi_Bo_visagbluesea.com.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3 sm:py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-all whitespace-nowrap shrink-0 border border-slate-200 min-h-[36px] sm:min-h-[38px]">
+        <i data-lucide="code" class="w-3.5 h-3.5 shrink-0 text-slate-600"></i>
+        <span class="hidden sm:inline">Bản Kỹ Thuật</span> Dev
+        <i data-lucide="chevron-right" class="w-3 h-3 shrink-0"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- ================= APP SHELL (2-TIER SIDEBAR ON DESKTOP) ================= -->
+  <div class="flex min-h-[calc(100vh-3.5rem)]">
+    
+    <!-- 1. GLOBAL MINI ICON RAIL (60px fixed bên trái) -->
+    <aside class="w-[60px] shrink-0 bg-white border-r border-slate-200 hidden lg:flex flex-col items-center py-4 space-y-4 sticky top-14 h-[calc(100vh-3.5rem)] self-start z-30">
+      <a href="#tong-quan" class="rail-btn relative p-2.5 rounded-xl text-slate-600 hover:text-emerald-600 hover:bg-slate-50 transition-colors group flex items-center justify-center active" title="Tổng Quan Bức Tranh">
+        <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+        <span class="absolute left-full ml-3 px-2.5 py-1 bg-slate-900 text-white text-[11px] font-semibold rounded-md shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
+          1. Bức Tranh Tổng Thể
+        </span>
+      </a>
+      
+      <a href="#diem-nghen-chuyen-doi" class="rail-btn relative p-2.5 rounded-xl text-slate-600 hover:text-red-600 hover:bg-slate-50 transition-colors group flex items-center justify-center" title="Điểm Nghẽn Thất Thoát">
+        <i data-lucide="alert-octagon" class="w-5 h-5 text-red-500"></i>
+        <span class="absolute left-full ml-3 px-2.5 py-1 bg-slate-900 text-white text-[11px] font-semibold rounded-md shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
+          2. Điểm Nghẽn Thất Thoát (P0)
+        </span>
+      </a>
+
+      <a href="#doi-sanh-truoc-sau" class="rail-btn relative p-2.5 rounded-xl text-slate-600 hover:text-emerald-600 hover:bg-slate-50 transition-colors group flex items-center justify-center" title="Đối Sánh Trước & Sau">
+        <i data-lucide="split-square-vertical" class="w-5 h-5 text-emerald-600"></i>
+        <span class="absolute left-full ml-3 px-2.5 py-1 bg-slate-900 text-white text-[11px] font-semibold rounded-md shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
+          3. Đối Sánh Trước & Sau
+        </span>
+      </a>
+
+      <a href="#bang-uu-tien-p0-p3" class="rail-btn relative p-2.5 rounded-xl text-slate-600 hover:text-amber-600 hover:bg-slate-50 transition-colors group flex items-center justify-center" title="Bảng Khuyến Nghị Ưu Tiên">
+        <i data-lucide="check-square" class="w-5 h-5 text-amber-500"></i>
+        <span class="absolute left-full ml-3 px-2.5 py-1 bg-slate-900 text-white text-[11px] font-semibold rounded-md shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
+          4. Bảng Ưu Tiên Xử Lý (14 Mục)
+        </span>
+      </a>
+
+      <a href="#kien-truc-sitemap" class="rail-btn relative p-2.5 rounded-xl text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition-colors group flex items-center justify-center" title="Sitemap & RFQ Hub">
+        <i data-lucide="git-branch" class="w-5 h-5 text-indigo-500"></i>
+        <span class="absolute left-full ml-3 px-2.5 py-1 bg-slate-900 text-white text-[11px] font-semibold rounded-md shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
+          5. Sitemap & RFQ Hub
+        </span>
+      </a>
+
+      <a href="#blueprint-sections" class="rail-btn relative p-2.5 rounded-xl text-slate-600 hover:text-blue-600 hover:bg-slate-50 transition-colors group flex items-center justify-center" title="Blueprint Bố Cục Trang Lõi">
+        <i data-lucide="layers" class="w-5 h-5 text-blue-500"></i>
+        <span class="absolute left-full ml-3 px-2.5 py-1 bg-slate-900 text-white text-[11px] font-semibold rounded-md shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
+          6. Blueprint Từng Khối
+        </span>
+      </a>
+
+      <a href="#luu-y-google-ads" class="rail-btn relative p-2.5 rounded-xl text-slate-600 hover:text-emerald-600 hover:bg-slate-50 transition-colors group flex items-center justify-center" title="Lưu Ý Google Ads">
+        <i data-lucide="trending-up" class="w-5 h-5 text-emerald-600"></i>
+        <span class="absolute left-full ml-3 px-2.5 py-1 bg-slate-900 text-white text-[11px] font-semibold rounded-md shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
+          7. Lưu Ý Google Ads
+        </span>
+      </a>
+      
+      <div class="pt-6 mt-auto border-t border-slate-200 flex flex-col items-center">
+        <a href="Du_Lieu_Trien_Khai_Chi_Tiet_visagbluesea.com.xlsx" download class="p-2.5 text-slate-400 hover:text-emerald-600 rounded-xl" title="Tải Excel 6 Sheets">
+          <i data-lucide="download" class="w-5 h-5"></i>
+        </a>
+      </div>
+    </aside>
+
+    <!-- 2. CONTEXTUAL SUB-SIDEBAR (220px desktop) -->
+    <aside class="w-56 shrink-0 bg-white border-r border-slate-200 hidden xl:block p-4 sticky top-14 h-[calc(100vh-3.5rem)] self-start overflow-y-auto">
+      <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-3 px-2 flex items-center justify-between">
+        <span>Đề Mục Thẩm Định</span>
+        <span class="bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded text-[10px]">v3.6</span>
+      </div>
+      <nav class="space-y-1 text-xs font-medium">
+        <a href="#tong-quan" class="nav-sub-item flex items-center justify-between px-2.5 py-2 rounded-lg text-slate-700 hover:bg-slate-50 transition-colors active">
+          <span class="truncate">1. Bức Tranh Tổng Thể</span>
+          <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.5 rounded">4 KPI</span>
+        </a>
+        <a href="#diem-nghen-chuyen-doi" class="nav-sub-item flex items-center justify-between px-2.5 py-2 rounded-lg text-slate-700 hover:bg-slate-50 transition-colors">
+          <span class="truncate">2. Điểm Nghẽn Thất Thoát</span>
+          <span class="text-[10px] bg-red-100 text-red-800 font-bold px-1.5 py-0.5 rounded">6 P0</span>
+        </a>
+        <a href="#doi-sanh-truoc-sau" class="nav-sub-item flex items-center justify-between px-2.5 py-2 rounded-lg text-slate-700 hover:bg-slate-50 transition-colors">
+          <span class="truncate">3. Đối Sánh Trước/Sau</span>
+          <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.5 rounded">3 Cặp</span>
+        </a>
+        <a href="#bang-uu-tien-p0-p3" class="nav-sub-item flex items-center justify-between px-2.5 py-2 rounded-lg text-slate-700 hover:bg-slate-50 transition-colors">
+          <span class="truncate">4. Bảng Ưu Tiên Xử Lý</span>
+          <span class="text-[10px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.5 rounded">14 Mục</span>
+        </a>
+        <a href="#kien-truc-sitemap" class="nav-sub-item flex items-center justify-between px-2.5 py-2 rounded-lg text-slate-700 hover:bg-slate-50 transition-colors">
+          <span class="truncate">5. Sitemap & RFQ Hub</span>
+          <span class="text-[10px] bg-indigo-100 text-indigo-800 font-bold px-1.5 py-0.5 rounded">5 Nhóm</span>
+        </a>
+        <a href="#blueprint-sections" class="nav-sub-item flex items-center justify-between px-2.5 py-2 rounded-lg text-slate-700 hover:bg-slate-50 transition-colors">
+          <span class="truncate">6. Blueprint Sections</span>
+          <span class="text-[10px] bg-blue-100 text-blue-800 font-bold px-1.5 py-0.5 rounded">7 Khối</span>
+        </a>
+        <a href="#luu-y-google-ads" class="nav-sub-item flex items-center justify-between px-2.5 py-2 rounded-lg text-slate-700 hover:bg-slate-50 transition-colors">
+          <span class="truncate">7. Lưu Ý Google Ads</span>
+          <span class="text-[10px] bg-emerald-100 text-emerald-800 font-bold px-1.5 py-0.5 rounded">4 Trụ Cột</span>
+        </a>
+      </nav>
+
+      <div class="mt-8 p-3 bg-slate-50 rounded-xl border border-slate-200 text-[11px] text-slate-600 space-y-2">
+        <div class="font-bold text-slate-800 flex items-center gap-1.5">
+          <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600"></i>
+          <span>Thẩm Định Độc Lập</span>
+        </div>
+        <p class="leading-relaxed text-[11px] text-slate-500">
+          Tài liệu đánh giá kỹ thuật trung lập gửi Ban Giám Đốc trước khi duyệt ngân sách quảng cáo.
+        </p>
+      </div>
+    </aside>
+
+    <!-- 3. MAIN WORKSPACE (Max-width 1280px Grid 70/30) -->
+    <main class="flex-1 p-3 sm:p-6 lg:p-8 space-y-10 max-w-[1280px] w-full mx-auto min-w-0">
+
+      <!-- ================= SECTION 1: BỨC TRANH TỔNG THỂ ================= -->
+      <section id="tong-quan" class="space-y-6">
+        <div class="border-b border-slate-200 pb-4">
+          <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 mb-2">
+            <i data-lucide="shield" class="w-3.5 h-3.5 text-emerald-600"></i>
+            <span>Thẩm Định Kỹ Thuật Độc Lập</span>
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            Thẩm Định Toàn Diện & Đánh Giá Năng Lực Chuyển Đổi Website
+          </h1>
+          <p class="text-slate-600 text-xs sm:text-sm mt-1.5 leading-relaxed max-w-4xl">
+            Đánh giá mức độ sẵn sàng tiếp nhận khách hàng của <span class="font-semibold text-slate-900">visagbluesea.com</span>. Nhận diện các điểm nghẽn và đưa ra giải pháp giúp tăng tối đa cuộc gọi và đơn tư vấn.
+          </p>
+        </div>
+
+        <!-- 4 Executive Stat Cards -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs hover:shadow-card transition-shadow">
+            <div class="flex items-center justify-between text-slate-500 mb-1">
+              <span class="text-[11px] font-semibold uppercase tracking-wider">Tỷ Lệ Đổi Hiện Tại</span>
+              <i data-lucide="trending-down" class="w-4 h-4 text-red-500"></i>
+            </div>
+            <span class="text-2xl sm:text-3xl font-black text-red-600 block">&lt; 0.4%</span>
+            <span class="text-[11px] text-slate-500 mt-1 block">Khách vào xem rồi thoát</span>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs hover:shadow-card transition-shadow">
+            <div class="flex items-center justify-between text-slate-500 mb-1">
+              <span class="text-[11px] font-semibold uppercase tracking-wider">Mục Tiêu Sau Tối Ưu</span>
+              <i data-lucide="trending-up" class="w-4 h-4 text-emerald-600"></i>
+            </div>
+            <span class="text-2xl sm:text-3xl font-black text-emerald-600 block">2.8% – 3.5%</span>
+            <span class="text-[11px] text-emerald-700 font-medium mt-1 block">Tăng gấp 7 lần liên hệ</span>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs hover:shadow-card transition-shadow">
+            <div class="flex items-center justify-between text-slate-500 mb-1">
+              <span class="text-[11px] font-semibold uppercase tracking-wider">Lỗi Chặn P0 (Khẩn)</span>
+              <i data-lucide="alert-triangle" class="w-4 h-4 text-red-600"></i>
+            </div>
+            <span class="text-2xl sm:text-3xl font-black text-red-600 block">6 Điểm Nghẽn</span>
+            <span class="text-[11px] text-slate-500 mt-1 block">Cần sửa ngay trong 48h</span>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs hover:shadow-card transition-shadow">
+            <div class="flex items-center justify-between text-slate-500 mb-1">
+              <span class="text-[11px] font-semibold uppercase tracking-wider">Tiết Kiệm Chi Phí Ads</span>
+              <i data-lucide="percent" class="w-4 h-4 text-blue-500"></i>
+            </div>
+            <span class="text-2xl sm:text-3xl font-black text-blue-600 block">35% – 45%</span>
+            <span class="text-[11px] text-slate-500 mt-1 block">Nhờ điểm chất lượng cao</span>
+          </div>
+        </div>
+
+        <!-- Strategic Alert Box (Đã biên tập ngắn gọn, dễ hiểu cho người làm kinh doanh) -->
+        <div class="bg-amber-50/80 border border-amber-200 p-4 rounded-xl flex items-start gap-3">
+          <i data-lucide="alert-circle" class="w-5 h-5 text-amber-600 shrink-0 mt-0.5"></i>
+          <div>
+            <h4 class="text-xs sm:text-sm font-bold text-amber-950">Nhận Định Chiến Lược Cho Doanh Nghiệp</h4>
+            <p class="text-xs sm:text-sm text-amber-900 mt-1 leading-relaxed">
+              Dịch vụ định cư có giá trị rất lớn (từ 12 đến 20 tỷ đồng). Khách hàng đòi hỏi độ tin cậy tuyệt đối trước khi liên hệ. Hiện tại, website để sót chữ tiếng nước ngoài và thiếu nút gọi nhanh trên điện thoại. Xử lý ngay các lỗi này sẽ giúp doanh nghiệp đón tiếp khách hàng tốt nhất và tránh lãng phí tiền quảng cáo.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= SECTION 2: ĐIỂM NGHẼN CHUYỂN ĐỔI P0 ================= -->
+      <section id="diem-nghen-chuyen-doi" class="space-y-6">
+        <div class="border-b border-slate-200 pb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+              <span class="w-2.5 h-6 bg-red-600 rounded-full inline-block"></span>
+              2. Các Điểm Nghẽn Thất Thoát Khách Hàng Thực Tế
+            </h2>
+            <p class="text-slate-500 text-xs sm:text-sm mt-0.5">Các vấn đề trực tiếp cản trở khách hàng gọi điện và điền biểu mẫu tư vấn.</p>
+          </div>
+
+          <!-- Interactive Filter Tabs -->
+          <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1">
+            <button onclick="filterFindings('all', this)" class="filter-pill active px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 bg-white text-slate-700 whitespace-nowrap shrink-0 transition-colors">
+              Tất Cả (6)
+            </button>
+            <button onclick="filterFindings('ui', this)" class="filter-pill px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 bg-white text-slate-700 whitespace-nowrap shrink-0 transition-colors">
+              Giao Diện & Mobile (4)
+            </button>
+            <button onclick="filterFindings('tech', this)" class="filter-pill px-3 py-1.5 text-xs font-semibold rounded-lg border border-slate-200 bg-white text-slate-700 whitespace-nowrap shrink-0 transition-colors">
+              SEO & Tracking (2)
+            </button>
+          </div>
+        </div>
+
+        <div class="space-y-4" id="findings-container">
+          
+          <!-- Card 1: 3 Hotline Header -->
+          <div class="finding-card bg-white p-4 sm:p-5 rounded-xl border border-slate-200 shadow-2xs space-y-3" data-cat="ui,mobile">
+            <div class="flex items-start justify-between gap-3">
+              <div class="flex items-center gap-2">
+                <span class="badge-p0 text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap shrink-0">P0 Khẩn Cấp</span>
+                <h3 class="text-sm sm:text-base font-bold text-slate-900">Header Chứa 3 Số Điện Thoại Gây Rối Mắt & Chữ "Call now:" Mất Số</h3>
+              </div>
+              <a href="https://www.visagbluesea.com/" target="_blank" class="inline-flex items-center gap-1 text-xs text-emerald-600 hover:text-emerald-700 font-semibold underline whitespace-nowrap shrink-0">
+                <span>Soi trang chủ</span> <i data-lucide="external-link" class="w-3.5 h-3.5 shrink-0"></i>
+              </a>
+            </div>
+            <div class="text-xs sm:text-sm text-slate-600 space-y-1">
+              <p><strong>Vấn đề:</strong> Header hiển thị 3 số điện thoại không có nhãn phân biệt. Nút "Call now:" bấm gọi nhưng bị ẩn mất số.</p>
+              <p><strong>Ảnh hưởng:</strong> Khách hàng phân vân không biết gọi số nào, làm thất thoát khoảng 25% cuộc gọi tư vấn.</p>
+              <p><strong>Cách xử lý:</strong> Giữ lại 1 Hotline Việt Nam chính (0901.830.827) và 1 Nút Chat Zalo nổi bật.</p>
+            </div>
+            <div class="bg-slate-50 p-2.5 sm:p-3 rounded-lg text-xs text-slate-700 flex flex-col sm:flex-row sm:items-center justify-between gap-2 border border-slate-200">
+              <span class="flex items-start gap-1.5"><i data-lucide="search" class="w-3.5 h-3.5 text-slate-500 shrink-0 mt-0.5"></i> Mở trang chủ trên máy tính, kiểm tra góc phải thanh tiêu đề Header.</span>
+              <span class="text-red-600 font-bold whitespace-nowrap">Thất thoát: ~25% cuộc gọi</span>
+            </div>
+          </div>
+
+          <!-- Card 2: Spanish 'Acerca de' on EB-5 -->
+          <div class="finding-card bg-white p-4 sm:p-5 rounded-xl border border-slate-200 shadow-2xs space-y-3" data-cat="ui,content">
+            <div class="flex items-start justify-between gap-3">
+              <div class="flex items-center gap-2">
+                <span class="badge-p0 text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap shrink-0">P0 Khẩn Cấp</span>
+                <h3 class="text-sm sm:text-base font-bold text-slate-900">Lộ Tiêu Đề Tiếng Tây Ban Nha "Acerca de" Trên Trang Định Cư Mỹ EB-5</h3>
+              </div>
+              <a href="https://www.visagbluesea.com/us-green-card-eb-5" target="_blank" class="inline-flex items-center gap-1 text-xs text-emerald-600 hover:text-emerald-700 font-semibold underline whitespace-nowrap shrink-0">
+                <span>Soi trang EB-5</span> <i data-lucide="external-link" class="w-3.5 h-3.5 shrink-0"></i>
+              </a>
+            </div>
+            <div class="text-xs sm:text-sm text-slate-600 space-y-1">
+              <p><strong>Vấn đề:</strong> Trang EB-5 (khoản đầu tư 20 tỷ đồng) hiển thị tiêu đề tiếng Tây Ban Nha "Acerca de" do lỗi giao diện mẫu.</p>
+              <p><strong>Ảnh hưởng:</strong> Khiến nhà đầu tư nghi ngờ năng lực pháp lý và sự chuyên nghiệp của doanh nghiệp.</p>
+              <p><strong>Cách xử lý:</strong> Đổi tiêu đề thành: "Đầu Tư Định Cư Mỹ EB-5 — Nhận Thẻ Xanh Cho Cả Gia Đình".</p>
+            </div>
+            <div class="bg-slate-50 p-2.5 sm:p-3 rounded-lg text-xs text-slate-700 flex flex-col sm:flex-row sm:items-center justify-between gap-2 border border-slate-200">
+              <span class="flex items-start gap-1.5"><i data-lucide="search" class="w-3.5 h-3.5 text-slate-500 shrink-0 mt-0.5"></i> Mở link EB-5, bấm F12 hoặc kiểm tra tiêu đề đầu trang sẽ thấy chữ "Acerca de".</span>
+              <span class="text-red-600 font-bold whitespace-nowrap">Rủi ro: Mất khách hàng VIP</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Mobile Sticky Bar missing -->
+          <div class="finding-card bg-white p-4 sm:p-5 rounded-xl border border-slate-200 shadow-2xs space-y-3" data-cat="ui,mobile">
+            <div class="flex items-start justify-between gap-3">
+              <div class="flex items-center gap-2">
+                <span class="badge-p0 text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap shrink-0">P0 Khẩn Cấp</span>
+                <h3 class="text-sm sm:text-base font-bold text-slate-900">Thiếu Thanh Nút Bấm Cố Định Dưới Đáy Màn Hình Điện Thoại (Thumb Zone)</h3>
+              </div>
+              <a href="https://www.visagbluesea.com/" target="_blank" class="inline-flex items-center gap-1 text-xs text-emerald-600 hover:text-emerald-700 font-semibold underline whitespace-nowrap shrink-0">
+                <span>Mở trên điện thoại</span> <i data-lucide="external-link" class="w-3.5 h-3.5 shrink-0"></i>
+              </a>
+            </div>
+            <div class="text-xs sm:text-sm text-slate-600 space-y-1">
+              <p><strong>Vấn đề:</strong> Website không có nút gọi điện hay Zalo cố định ở chân màn hình điện thoại.</p>
+              <p><strong>Ảnh hưởng:</strong> Hơn 75% khách hàng dùng điện thoại phải cuộn ngược lên đầu trang để tìm số, thất thoát 50% lượt liên hệ.</p>
+              <p><strong>Cách xử lý:</strong> Gắn thanh cố định đáy màn hình gồm 2 nút lớn: [Gọi Hotline 24/7] và [Chat Zalo].</p>
+            </div>
+            <div class="bg-slate-50 p-2.5 sm:p-3 rounded-lg text-xs text-slate-700 flex flex-col sm:flex-row sm:items-center justify-between gap-2 border border-slate-200">
+              <span class="flex items-start gap-1.5"><i data-lucide="smartphone" class="w-3.5 h-3.5 text-slate-500 shrink-0 mt-0.5"></i> Mở web trên smartphone, cuộn xuống giữa trang không thấy nút liên hệ theo ngón tay cái.</span>
+              <span class="text-red-600 font-bold whitespace-nowrap">Thất thoát: ~50% khách di động</span>
+            </div>
+          </div>
+
+          <!-- Card 4: Form split friction -->
+          <div class="finding-card bg-white p-4 sm:p-5 rounded-xl border border-slate-200 shadow-2xs space-y-3" data-cat="ui,mobile">
+            <div class="flex items-start justify-between gap-3">
+              <div class="flex items-center gap-2">
+                <span class="badge-p0 text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap shrink-0">P0 Khẩn Cấp</span>
+                <h3 class="text-sm sm:text-base font-bold text-slate-900">Biểu Mẫu Tư Vấn Tách Ô Tên & Họ Riêng Biệt, Bắt Nhập Email</h3>
+              </div>
+              <a href="https://www.visagbluesea.com/contact-us" target="_blank" class="inline-flex items-center gap-1 text-xs text-emerald-600 hover:text-emerald-700 font-semibold underline whitespace-nowrap shrink-0">
+                <span>Soi trang liên hệ</span> <i data-lucide="external-link" class="w-3.5 h-3.5 shrink-0"></i>
+              </a>
+            </div>
+            <div class="text-xs sm:text-sm text-slate-600 space-y-1">
+              <p><strong>Vấn đề:</strong> Biểu mẫu tách riêng ô Họ và Tên, đồng thời bắt buộc nhập Email.</p>
+              <p><strong>Ảnh hưởng:</strong> Gây phiền toái khi gõ phím trên điện thoại, khiến 65% người dùng bỏ dở không gửi thông tin.</p>
+              <p><strong>Cách xử lý:</strong> Rút gọn còn 3 ô: Họ tên, Số điện thoại/Zalo và Nhu cầu quan tâm. Cam kết gọi lại sau 15 phút.</p>
+            </div>
+            <div class="bg-slate-50 p-2.5 sm:p-3 rounded-lg text-xs text-slate-700 flex flex-col sm:flex-row sm:items-center justify-between gap-2 border border-slate-200">
+              <span class="flex items-start gap-1.5"><i data-lucide="search" class="w-3.5 h-3.5 text-slate-500 shrink-0 mt-0.5"></i> Mở form tư vấn ở chân trang chủ hoặc trang liên hệ có 2 ô nhập họ tên riêng lẻ.</span>
+              <span class="text-red-600 font-bold whitespace-nowrap">Tỷ lệ bỏ dở form: ~65%</span>
+            </div>
+          </div>
+
+          <!-- Card 5: Missing H1 Golden Visa -->
+          <div class="finding-card bg-white p-4 sm:p-5 rounded-xl border border-slate-200 shadow-2xs space-y-3" data-cat="tech,seo">
+            <div class="flex items-start justify-between gap-3">
+              <div class="flex items-center gap-2">
+                <span class="badge-p0 text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap shrink-0">P0 Khẩn Cấp</span>
+                <h3 class="text-sm sm:text-base font-bold text-slate-900">Trang Định Cư Châu Âu Golden Visa Khuyết Hoàn Toàn Thẻ H1</h3>
+              </div>
+              <a href="https://www.visagbluesea.com/eu-golden-visa" target="_blank" class="inline-flex items-center gap-1 text-xs text-emerald-600 hover:text-emerald-700 font-semibold underline whitespace-nowrap shrink-0">
+                <span>Soi trang Golden Visa</span> <i data-lucide="external-link" class="w-3.5 h-3.5 shrink-0"></i>
+              </a>
+            </div>
+            <div class="text-xs sm:text-sm text-slate-600 space-y-1">
+              <p><strong>Vấn đề:</strong> Trang Châu Âu Golden Visa hoàn toàn không có tiêu đề chính (thẻ H1).</p>
+              <p><strong>Ảnh hưởng:</strong> Google đánh giá chất lượng trang thấp, làm tăng 30% chi phí trên mỗi lượt nhấp chuột.</p>
+              <p><strong>Cách xử lý:</strong> Bổ sung tiêu đề chính: "Chương Trình Golden Visa Châu Âu: Định Cư Hy Lạp & Síp 2026".</p>
+            </div>
+            <div class="bg-slate-50 p-2.5 sm:p-3 rounded-lg text-xs text-slate-700 flex flex-col sm:flex-row sm:items-center justify-between gap-2 border border-slate-200">
+              <span class="flex items-start gap-1.5"><i data-lucide="search" class="w-3.5 h-3.5 text-slate-500 shrink-0 mt-0.5"></i> Bấm Ctrl+U tìm kiếm thẻ &lt;h1&gt; trả về 0 kết quả.</span>
+              <span class="text-red-600 font-bold whitespace-nowrap">Đội giá thầu Ads: +30%</span>
+            </div>
+          </div>
+
+          <!-- Card 6: Tracking Missing -->
+          <div class="finding-card bg-white p-4 sm:p-5 rounded-xl border border-slate-200 shadow-2xs space-y-3" data-cat="tech,tracking">
+            <div class="flex items-start justify-between gap-3">
+              <div class="flex items-center gap-2">
+                <span class="badge-p0 text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap shrink-0">P0 Khẩn Cấp</span>
+                <h3 class="text-sm sm:text-base font-bold text-slate-900">Chưa Cài Đặt Thẻ Đo Lường Chuyển Đổi Google Ads (GTM Tag)</h3>
+              </div>
+              <span class="text-xs text-slate-400">GTM Snippet</span>
+            </div>
+            <div class="text-xs sm:text-sm text-slate-600 space-y-1">
+              <p><strong>Vấn đề:</strong> Website chưa cài mã theo dõi lượt gọi, chat Zalo và gửi form cho Google Ads.</p>
+              <p><strong>Ảnh hưởng:</strong> Không đo được hiệu quả thực tế; thuật toán quảng cáo không biết ai là khách hàng thật để tối ưu.</p>
+              <p><strong>Cách xử lý:</strong> Cài đặt mã theo dõi tự động ghi nhận khi khách bấm gọi, bấm Zalo hoặc gửi form.</p>
+            </div>
+            <div class="bg-slate-50 p-2.5 sm:p-3 rounded-lg text-xs text-slate-700 flex flex-col sm:flex-row sm:items-center justify-between gap-2 border border-slate-200">
+              <span class="flex items-start gap-1.5"><i data-lucide="info" class="w-3.5 h-3.5 text-slate-500 shrink-0 mt-0.5"></i> Bật chế độ GTM Preview kiểm tra khi click nút gọi không có thẻ Google Ads nào kích hoạt.</span>
+              <span class="text-red-600 font-bold whitespace-nowrap">Hậu quả: Máy học Ads mất dấu</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================= SECTION 3: ĐỐI SÁNH TRƯỚC VÀ SAU (BEFORE/AFTER) ================= -->
+      <section id="doi-sanh-truoc-sau" class="space-y-6">
+        <div class="border-b border-slate-200 pb-3">
+          <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+            <span class="w-2.5 h-6 bg-emerald-600 rounded-full inline-block"></span>
+            3. Đối Sánh Trực Quan: Hiện Trạng vs Phương Án Sau Tối Ưu
+          </h2>
+          <p class="text-slate-500 text-xs sm:text-sm mt-0.5">Đặt song song ảnh chụp thực tế trên website hiện tại và bản vẽ mô phỏng phương án đề xuất.</p>
+        </div>
+
+        <!-- Cặp 1: Hero Banner Desktop -->
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-2xs">
+          <div class="p-4 bg-slate-100/70 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div>
+              <span class="text-[11px] font-bold text-emerald-700 uppercase tracking-wider block">Cặp Đối Sánh 01 • Giao Diện Máy Tính</span>
+              <h3 class="text-sm sm:text-base font-bold text-slate-900">Khu Vực Đầu Trang (Hero Banner) & Cụm Chuyển Đổi Kép</h3>
+            </div>
+            <a href="https://www.visagbluesea.com/" target="_blank" class="text-xs text-slate-600 hover:text-slate-900 flex items-center gap-1 font-medium">
+              <span>Kiểm chứng trang chủ</span> <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+
+          <div class="p-4 sm:p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Cột Trái: Hiện trạng -->
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-bold bg-red-100 text-red-800">
+                  <span class="w-2 h-2 rounded-full bg-red-600"></span> ❌ Hiện Trạng Thực Tế
+                </span>
+                <span class="text-[11px] text-slate-400">Ảnh chụp 1440x900</span>
+              </div>
+              <div class="border border-slate-200 rounded-xl overflow-hidden bg-slate-100 relative group cursor-pointer" onclick="openLightbox('Bang_Chung_Hinh_Anh/desktop_homepage_view.png', 'Hiện trạng: Hero Banner thiếu định vị rõ ràng, 3 số điện thoại gây rối')">
+                <img src="Bang_Chung_Hinh_Anh/desktop_homepage_view.png" alt="Hiện trạng Hero Banner Desktop" class="w-full h-auto object-cover aspect-[16/10] group-hover:scale-105 transition-transform duration-300">
+                <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-bold gap-1.5 backdrop-blur-xs">
+                  <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                  <span>Nhấp để phóng to chi tiết</span>
+                </div>
+              </div>
+              <ul class="text-xs text-slate-600 space-y-1.5 bg-slate-50 p-3 rounded-lg border border-slate-200">
+                <li class="flex items-start gap-1.5"><span class="text-red-500 font-bold shrink-0">✕</span> Tiêu đề mờ nhạt: "Các dịch vụ nổi bật", thiếu từ khóa dịch vụ di trú.</li>
+                <li class="flex items-start gap-1.5"><span class="text-red-500 font-bold shrink-0">✕</span> Cụm 3 số điện thoại không có chú thích, chữ "Call now:" bị lỗi số.</li>
+                <li class="flex items-start gap-1.5"><span class="text-red-500 font-bold shrink-0">✕</span> Thiếu form thẩm định nhanh và thiếu nút gọi trực diện.</li>
+              </ul>
+            </div>
+
+            <!-- Cột Phải: Phương án mẫu -->
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-bold bg-emerald-100 text-emerald-800">
+                  <span class="w-2 h-2 rounded-full bg-emerald-600"></span> ✨ Phương Án Sau Tối Ưu (Phương Án Mẫu)
+                </span>
+                <span class="text-[11px] text-emerald-700 font-semibold">Tỷ lệ 16:9 Chuẩn CRO</span>
+              </div>
+              <div class="border border-emerald-300 rounded-xl overflow-hidden bg-emerald-50/50 relative group cursor-pointer shadow-sm" onclick="openLightbox('Bang_Chung_Hinh_Anh/phuong_an_mau_desktop_hero.jpg', 'Phương án mẫu: Hero Banner chuẩn nhận diện Emerald, Headline tỷ lệ đậu 99.2%, Cặp nút CTA kép và Form 3 trường')">
+                <img src="Bang_Chung_Hinh_Anh/phuong_an_mau_desktop_hero.jpg" alt="Phương án mẫu Hero Banner" class="w-full h-auto object-cover aspect-[16/10] group-hover:scale-105 transition-transform duration-300">
+                <div class="absolute inset-0 bg-emerald-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-bold gap-1.5 backdrop-blur-xs">
+                  <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                  <span>Nhấp để phóng to chi tiết</span>
+                </div>
+              </div>
+              <ul class="text-xs text-slate-700 space-y-1.5 bg-emerald-50/60 p-3 rounded-lg border border-emerald-200">
+                <li class="flex items-start gap-1.5"><span class="text-emerald-600 font-bold shrink-0">✓</span> <strong>Tiêu đề định vị mạnh mẽ:</strong> "Tư Vấn Định Cư, Đầu Tư & Visa Toàn Cầu".</li>
+                <li class="flex items-start gap-1.5"><span class="text-emerald-600 font-bold shrink-0">✓</span> <strong>Cặp nút hành động kép:</strong> [Nhận Thẩm Định Hồ Sơ] + Hotline [0901.830.827].</li>
+                <li class="flex items-start gap-1.5"><span class="text-emerald-600 font-bold shrink-0">✓</span> <strong>Form thẩm định nhanh:</strong> Chỉ 3 trường nhập liệu, chuyên viên phản hồi sau 15 phút.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="px-6 py-2.5 bg-slate-50 border-t border-slate-200 text-[11px] text-slate-500 italic">
+            Ghi chú minh bạch: Bản thiết kế cột bên phải là bản vẽ mô phỏng phương án đề xuất nhằm minh họa trực quan sự nâng tầm về nhận diện thương hiệu và khả năng giữ chân khách hàng.
+          </div>
+        </div>
+
+        <!-- Cặp 2: Mobile Viewport & Sticky Bar -->
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-2xs">
+          <div class="p-4 bg-slate-100/70 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div>
+              <span class="text-[11px] font-bold text-emerald-700 uppercase tracking-wider block">Cặp Đối Sánh 02 • Giao Diện Điện Thoại</span>
+              <h3 class="text-sm sm:text-base font-bold text-slate-900">Trải Nghiệm Cuộn Trang & Thanh Nút Bấm Đáy Màn Hình (Mobile Sticky Bar)</h3>
+            </div>
+            <a href="https://www.visagbluesea.com/us-green-card-eb-5" target="_blank" class="text-xs text-slate-600 hover:text-slate-900 flex items-center gap-1 font-medium">
+              <span>Kiểm chứng trang di động</span> <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+
+          <div class="p-4 sm:p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Cột Trái: Hiện trạng Mobile -->
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-bold bg-red-100 text-red-800">
+                  <span class="w-2 h-2 rounded-full bg-red-600"></span> ❌ Hiện Trạng Trên Smartphone
+                </span>
+                <span class="text-[11px] text-slate-400">Ảnh chụp 390x844</span>
+              </div>
+              <div class="border border-slate-200 rounded-xl overflow-hidden bg-slate-100 relative group cursor-pointer flex justify-center py-4" onclick="openLightbox('Bang_Chung_Hinh_Anh/mobile_homepage_view.png', 'Hiện trạng Mobile: Không có thanh nút bấm chân trang, khách phải tự tìm cách liên hệ')">
+                <img src="Bang_Chung_Hinh_Anh/mobile_homepage_view.png" alt="Hiện trạng Mobile" class="max-h-[460px] w-auto object-contain rounded-lg shadow-sm group-hover:scale-105 transition-transform duration-300">
+                <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-bold gap-1.5 backdrop-blur-xs">
+                  <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                  <span>Nhấp để phóng to</span>
+                </div>
+              </div>
+              <ul class="text-xs text-slate-600 space-y-1.5 bg-slate-50 p-3 rounded-lg border border-slate-200">
+                <li class="flex items-start gap-1.5"><span class="text-red-500 font-bold shrink-0">✕</span> Chân màn hình trống trơn, không có nút Gọi Ngay hoặc Chat Zalo.</li>
+                <li class="flex items-start gap-1.5"><span class="text-red-500 font-bold shrink-0">✕</span> Khách đọc hết thông tin điều kiện visa không có chỗ liên hệ nhanh.</li>
+              </ul>
+            </div>
+
+            <!-- Cột Phải: Phương án mẫu Mobile Sticky Bar -->
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-bold bg-emerald-100 text-emerald-800">
+                  <span class="w-2 h-2 rounded-full bg-emerald-600"></span> ✨ Phương Án Sau Tối Ưu (Phương Án Mẫu)
+                </span>
+                <span class="text-[11px] text-emerald-700 font-semibold">Tỷ lệ 9:16 Chuẩn Mobile UX</span>
+              </div>
+              <div class="border border-emerald-300 rounded-xl overflow-hidden bg-emerald-50/50 relative group cursor-pointer flex justify-center py-4 shadow-sm" onclick="openLightbox('Bang_Chung_Hinh_Anh/phuong_an_mau_mobile_sticky_bar.jpg', 'Phương án mẫu Mobile: Thanh Sticky Action Bar cố định đáy với 2 nút [Gọi Hotline 24/7] + [Zalo Tư Vấn]')">
+                <img src="Bang_Chung_Hinh_Anh/phuong_an_mau_mobile_sticky_bar.jpg" alt="Phương án mẫu Mobile Sticky Bar" class="max-h-[460px] w-auto object-contain rounded-lg shadow-sm group-hover:scale-105 transition-transform duration-300">
+                <div class="absolute inset-0 bg-emerald-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-bold gap-1.5 backdrop-blur-xs">
+                  <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                  <span>Nhấp để phóng to</span>
+                </div>
+              </div>
+              <ul class="text-xs text-slate-700 space-y-1.5 bg-emerald-50/60 p-3 rounded-lg border border-emerald-200">
+                <li class="flex items-start gap-1.5"><span class="text-emerald-600 font-bold shrink-0">✓</span> <strong>Thanh Sticky Action Bar cố định đáy:</strong> Luôn nằm trong tầm bấm ngón cái (Thumb Zone).</li>
+                <li class="flex items-start gap-1.5"><span class="text-emerald-600 font-bold shrink-0">✓</span> <strong>Cụm 2 nút chạm trực tiếp:</strong> [📞 Gọi Hotline 24/7] và [💬 Chat Zalo Thẩm Định].</li>
+              </ul>
+            </div>
+          </div>
+          <div class="px-6 py-2.5 bg-slate-50 border-t border-slate-200 text-[11px] text-slate-500 italic">
+            Bản thiết kế cột bên phải là bản vẽ mô phỏng phương án đề xuất nhằm minh họa trải nghiệm người dùng tối ưu trên thiết bị di động.
+          </div>
+        </div>
+
+        <!-- Cặp 3: Bằng chứng lỗi SEO Panel Extension -->
+        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-2xs p-4 sm:p-6 space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 pb-3">
+            <div>
+              <span class="text-[11px] font-bold text-red-600 uppercase tracking-wider block">Bằng Chứng Kiểm Định Công Cụ Độc Lập</span>
+              <h3 class="text-sm sm:text-base font-bold text-slate-900">Bảng Soi Lỗi Tiêu Đề H1 & Cảnh Báo Kỹ Thuật (SEO Pro Extension)</h3>
+            </div>
+            <span class="text-xs text-slate-500">Đối chiếu mã nguồn HTML</span>
+          </div>
+
+          <div class="border border-slate-200 rounded-xl overflow-hidden relative group cursor-pointer" onclick="openLightbox('Bang_Chung_Hinh_Anh/bang_chung_detailed_seo_panel.png', 'Bằng chứng trích xuất từ công cụ kiểm định Detailed SEO: 2 thẻ H1 trên trang chủ, lỗi Acerca de trên EB-5 và sitemap rác')">
+            <img src="Bang_Chung_Hinh_Anh/bang_chung_detailed_seo_panel.png" alt="Bằng chứng Detailed SEO Extension" class="w-full h-auto object-contain group-hover:scale-[1.01] transition-transform duration-300">
+            <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-bold gap-1.5 backdrop-blur-xs">
+              <i data-lucide="maximize-2" class="w-4 h-4"></i>
+              <span>Nhấp để phóng to ảnh kích thước đầy đủ</span>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ================= SECTION 4: BẢNG ƯU TIÊN XỬ LÝ (DESKTOP TABLE + MOBILE CARDS) ================= -->
+      <section id="bang-uu-tien-p0-p3" class="space-y-6">
+        <div class="border-b border-slate-200 pb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+              <span class="w-2.5 h-6 bg-amber-500 rounded-full inline-block"></span>
+              4. Bảng Tổng Hợp Khuyến Nghị Theo Thứ Tự Ưu Tiên
+            </h2>
+            <p class="text-slate-500 text-xs sm:text-sm mt-0.5">Danh mục 14 hạng mục kỹ thuật cần xử lý (Hiển thị dạng Card trên Mobile, Bảng trên Desktop).</p>
+          </div>
+
+          <!-- Bộ lọc ưu tiên P0 / P1 / P2 cho bảng -->
+          <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1">
+            <button onclick="filterTablePriority('all', this)" class="table-filter-btn active px-3 py-1 text-xs font-semibold rounded-lg border border-slate-300 bg-white text-slate-700 whitespace-nowrap shrink-0 transition-colors">
+              Tất Cả (14)
+            </button>
+            <button onclick="filterTablePriority('P0', this)" class="table-filter-btn px-3 py-1 text-xs font-semibold rounded-lg border border-slate-300 bg-white text-slate-700 whitespace-nowrap shrink-0 transition-colors">
+              P0 Khẩn Cấp (6)
+            </button>
+            <button onclick="filterTablePriority('P1', this)" class="table-filter-btn px-3 py-1 text-xs font-semibold rounded-lg border border-slate-300 bg-white text-slate-700 whitespace-nowrap shrink-0 transition-colors">
+              P1 Quan Trọng (5)
+            </button>
+            <button onclick="filterTablePriority('P2', this)" class="table-filter-btn px-3 py-1 text-xs font-semibold rounded-lg border border-slate-300 bg-white text-slate-700 whitespace-nowrap shrink-0 transition-colors">
+              P2 Trung Bình (3)
+            </button>
+          </div>
+        </div>
+
+        <!-- 1. GIAO DIỆN MÁY TÍNH (DESKTOP TABLE) -->
+        <div class="hidden md:block overflow-x-auto bg-white rounded-xl border border-slate-200 shadow-2xs">
+          <table class="w-full text-left border-collapse text-xs sm:text-sm" id="desktop-action-table">
+            <thead>
+              <tr class="bg-slate-100 border-b border-slate-200 text-slate-700 font-bold">
+                <th class="p-3 whitespace-nowrap">Mã</th>
+                <th class="p-3">Hạng Mục Công Việc</th>
+                <th class="p-3">Vấn Đề Ghi Nhận</th>
+                <th class="p-3">Hành Động Khắc Phục</th>
+                <th class="p-3 whitespace-nowrap">Ưu Tiên</th>
+                <th class="p-3 whitespace-nowrap">Link Soi Lỗi</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200 text-slate-700">
+              <tr class="table-row-item hover:bg-slate-50" data-prio="P0">
+                <td class="p-3 font-mono font-bold text-slate-900 whitespace-nowrap">F-UI-01</td>
+                <td class="p-3 font-semibold text-slate-900">Header 3 Hotline rối mắt</td>
+                <td class="p-3 text-slate-600">3 số điện thoại không rõ vai trò, chữ Call now mất số</td>
+                <td class="p-3 text-slate-800">Quy chuẩn còn 1 Hotline chính + 1 Zalo, có nhãn rõ</td>
+                <td class="p-3"><span class="badge-p0 text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap">P0 (Khẩn)</span></td>
+                <td class="p-3 whitespace-nowrap"><a href="https://www.visagbluesea.com/" target="_blank" class="text-emerald-600 hover:underline font-medium inline-flex items-center gap-1">Trang chủ <i data-lucide="external-link" class="w-3 h-3"></i></a></td>
+              </tr>
+              <tr class="table-row-item hover:bg-slate-50" data-prio="P0">
+                <td class="p-3 font-mono font-bold text-slate-900 whitespace-nowrap">F-UI-02</td>
+                <td class="p-3 font-semibold text-slate-900">Sót chữ Tây Ban Nha "Acerca de"</td>
+                <td class="p-3 text-slate-600">Thẻ H1 trang EB-5 triệu đô hiển thị chữ nước ngoài</td>
+                <td class="p-3 text-slate-800">Đổi thành "Đầu Tư Định Cư Mỹ EB-5 — Nhận Thẻ Xanh"</td>
+                <td class="p-3"><span class="badge-p0 text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap">P0 (Khẩn)</span></td>
+                <td class="p-3 whitespace-nowrap"><a href="https://www.visagbluesea.com/us-green-card-eb-5" target="_blank" class="text-emerald-600 hover:underline font-medium inline-flex items-center gap-1">Trang EB-5 <i data-lucide="external-link" class="w-3 h-3"></i></a></td>
+              </tr>
+              <tr class="table-row-item hover:bg-slate-50" data-prio="P0">
+                <td class="p-3 font-mono font-bold text-slate-900 whitespace-nowrap">F-UI-03</td>
+                <td class="p-3 font-semibold text-slate-900">Thiếu Mobile Sticky Action Bar</td>
+                <td class="p-3 text-slate-600">Không có nút gọi/zalo cố định đáy màn hình điện thoại</td>
+                <td class="p-3 text-slate-800">Lập trình thanh cố định đáy: 2 nút [Gọi Ngay] + [Zalo]</td>
+                <td class="p-3"><span class="badge-p0 text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap">P0 (Khẩn)</span></td>
+                <td class="p-3 whitespace-nowrap"><a href="https://www.visagbluesea.com/" target="_blank" class="text-emerald-600 hover:underline font-medium inline-flex items-center gap-1">Bật mobile <i data-lucide="external-link" class="w-3 h-3"></i></a></td>
+              </tr>
+              <tr class="table-row-item hover:bg-slate-50" data-prio="P0">
+                <td class="p-3 font-mono font-bold text-slate-900 whitespace-nowrap">F-UI-04</td>
+                <td class="p-3 font-semibold text-slate-900">Form tách riêng ô Tên & Họ</td>
+                <td class="p-3 text-slate-600">Form phức tạp, bắt buộc nhập email tạo ma sát tâm lý</td>
+                <td class="p-3 text-slate-800">Gộp thành 3 ô: Họ tên, SĐT Zalo, Nhu cầu quan tâm</td>
+                <td class="p-3"><span class="badge-p0 text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap">P0 (Khẩn)</span></td>
+                <td class="p-3 whitespace-nowrap"><a href="https://www.visagbluesea.com/contact-us" target="_blank" class="text-emerald-600 hover:underline font-medium inline-flex items-center gap-1">Trang Form <i data-lucide="external-link" class="w-3 h-3"></i></a></td>
+              </tr>
+              <tr class="table-row-item hover:bg-slate-50" data-prio="P0">
+                <td class="p-3 font-mono font-bold text-slate-900 whitespace-nowrap">F-SEO-01</td>
+                <td class="p-3 font-semibold text-slate-900">Trang Golden Visa khuyết H1</td>
+                <td class="p-3 text-slate-600">Trang đích hoàn toàn không có thẻ tiêu đề chính H1</td>
+                <td class="p-3 text-slate-800">Thêm H1: "Chương Trình Golden Visa Định Cư Hy Lạp & Síp"</td>
+                <td class="p-3"><span class="badge-p0 text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap">P0 (Khẩn)</span></td>
+                <td class="p-3 whitespace-nowrap"><a href="https://www.visagbluesea.com/eu-golden-visa" target="_blank" class="text-emerald-600 hover:underline font-medium inline-flex items-center gap-1">Trang EU Visa <i data-lucide="external-link" class="w-3 h-3"></i></a></td>
+              </tr>
+              <tr class="table-row-item hover:bg-slate-50" data-prio="P0">
+                <td class="p-3 font-mono font-bold text-slate-900 whitespace-nowrap">F-TRK-01</td>
+                <td class="p-3 font-semibold text-slate-900">Chưa gắn thẻ đo lường Google Ads</td>
+                <td class="p-3 text-slate-600">GTM chưa cấu hình ghi nhận chuyển đổi lượt gọi và gửi form</td>
+                <td class="p-3 text-slate-800">Tạo Conversion Action trong Google Ads và kích hoạt GTM</td>
+                <td class="p-3"><span class="badge-p0 text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap">P0 (Khẩn)</span></td>
+                <td class="p-3 whitespace-nowrap"><span class="text-slate-400">GTM Snippet</span></td>
+              </tr>
+              <tr class="table-row-item hover:bg-slate-50" data-prio="P1">
+                <td class="p-3 font-mono font-bold text-slate-900 whitespace-nowrap">F-UI-05</td>
+                <td class="p-3 font-semibold text-slate-900">Tiêu đề mẫu "CAPS TITLE"</td>
+                <td class="p-3 text-slate-600">Sót chữ mẫu tiếng Anh của template Wix trên trang chủ</td>
+                <td class="p-3 text-slate-800">Xóa bỏ khối chữ mẫu, thay bằng tiêu đề chuyên môn</td>
+                <td class="p-3"><span class="badge-p1 text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap">P1 (Cao)</span></td>
+                <td class="p-3 whitespace-nowrap"><a href="https://www.visagbluesea.com/" target="_blank" class="text-emerald-600 hover:underline font-medium inline-flex items-center gap-1">Trang chủ <i data-lucide="external-link" class="w-3 h-3"></i></a></td>
+              </tr>
+              <tr class="table-row-item hover:bg-slate-50" data-prio="P1">
+                <td class="p-3 font-mono font-bold text-slate-900 whitespace-nowrap">F-UI-06</td>
+                <td class="p-3 font-semibold text-slate-900">Số liệu thành tựu dồn cục "17 5347 235"</td>
+                <td class="p-3 text-slate-600">Các con số dồn chung vào thẻ H2 không có nhãn</td>
+                <td class="p-3 text-slate-800">Thiết kế 3 thẻ Stat Cards: 17+ Quốc gia, 5,300+ Khách hàng</td>
+                <td class="p-3"><span class="badge-p1 text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap">P1 (Cao)</span></td>
+                <td class="p-3 whitespace-nowrap"><a href="https://www.visagbluesea.com/" target="_blank" class="text-emerald-600 hover:underline font-medium inline-flex items-center gap-1">Trang chủ <i data-lucide="external-link" class="w-3 h-3"></i></a></td>
+              </tr>
+              <tr class="table-row-item hover:bg-slate-50" data-prio="P1">
+                <td class="p-3 font-mono font-bold text-slate-900 whitespace-nowrap">F-SEO-02</td>
+                <td class="p-3 font-semibold text-slate-900">URL nhân bản rác lọt sitemap</td>
+                <td class="p-3 text-slate-600">Trang /copy-of-malta-investment-visa-1 làm loãng uy tín</td>
+                <td class="p-3 text-slate-800">Chuyển hướng 301 về trang chính hoặc xóa bỏ khỏi Wix</td>
+                <td class="p-3"><span class="badge-p1 text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap">P1 (Cao)</span></td>
+                <td class="p-3 whitespace-nowrap"><a href="https://www.visagbluesea.com/copy-of-malta-investment-visa-1" target="_blank" class="text-emerald-600 hover:underline font-medium inline-flex items-center gap-1">Trang rác <i data-lucide="external-link" class="w-3 h-3"></i></a></td>
+              </tr>
+              <tr class="table-row-item hover:bg-slate-50" data-prio="P1">
+                <td class="p-3 font-mono font-bold text-slate-900 whitespace-nowrap">F-CRO-01</td>
+                <td class="p-3 font-semibold text-slate-900">Thiếu Trung Tâm Báo Phí RFQ Hub</td>
+                <td class="p-3 text-slate-600">Trang chi tiết chỉ có bài viết dài, thiếu bảng dự toán BOQ</td>
+                <td class="p-3 text-slate-800">Dựng trang RFQ Hub so sánh 3 gói định cư và nút tải PDF</td>
+                <td class="p-3"><span class="badge-p1 text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap">P1 (Cao)</span></td>
+                <td class="p-3 whitespace-nowrap"><span class="text-blue-600 font-semibold">Tạo mới</span></td>
+              </tr>
+              <tr class="table-row-item hover:bg-slate-50" data-prio="P1">
+                <td class="p-3 font-mono font-bold text-slate-900 whitespace-nowrap">F-TEC-01</td>
+                <td class="p-3 font-semibold text-slate-900">Mã nguồn Wix nặng 1.22 MB</td>
+                <td class="p-3 text-slate-600">HTML tĩnh chiếm 61% giới hạn 2MB cào của Googlebot</td>
+                <td class="p-3 text-slate-800">Tắt các widget Wix không dùng, nén toàn bộ ảnh sang WebP</td>
+                <td class="p-3"><span class="badge-p1 text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap">P1 (Cao)</span></td>
+                <td class="p-3 whitespace-nowrap"><span class="text-slate-400">Toàn site</span></td>
+              </tr>
+              <tr class="table-row-item hover:bg-slate-50" data-prio="P2">
+                <td class="p-3 font-mono font-bold text-slate-900 whitespace-nowrap">F-SEO-03</td>
+                <td class="p-3 font-semibold text-slate-900">Trang chủ bị gán 2 thẻ H1</td>
+                <td class="p-3 text-slate-600">Một đoạn văn dài 4 dòng bị gán nhầm thẻ H1 thứ hai</td>
+                <td class="p-3 text-slate-800">Đổi đoạn văn thành thẻ &lt;p&gt;, giữ duy nhất 1 thẻ H1</td>
+                <td class="p-3"><span class="badge-p2 text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap">P2 (TB)</span></td>
+                <td class="p-3 whitespace-nowrap"><a href="https://www.visagbluesea.com/" target="_blank" class="text-emerald-600 hover:underline font-medium inline-flex items-center gap-1">Trang chủ <i data-lucide="external-link" class="w-3 h-3"></i></a></td>
+              </tr>
+              <tr class="table-row-item hover:bg-slate-50" data-prio="P2">
+                <td class="p-3 font-mono font-bold text-slate-900 whitespace-nowrap">F-SEO-04</td>
+                <td class="p-3 font-semibold text-slate-900">Thiếu Schema Doanh Nghiệp & Dịch Vụ</td>
+                <td class="p-3 text-slate-600">Website chỉ có 2 thẻ WebSite sơ sài, thiếu LegalService</td>
+                <td class="p-3 text-slate-800">Bổ sung khối Schema JSON-LD LegalService + NAP 5 văn phòng</td>
+                <td class="p-3"><span class="badge-p2 text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap">P2 (TB)</span></td>
+                <td class="p-3 whitespace-nowrap"><span class="text-slate-400">Head Tag</span></td>
+              </tr>
+              <tr class="table-row-item hover:bg-slate-50" data-prio="P2">
+                <td class="p-3 font-mono font-bold text-slate-900 whitespace-nowrap">F-UI-07</td>
+                <td class="p-3 font-semibold text-slate-900">Tin tức chéo không khớp trang đích</td>
+                <td class="p-3 text-slate-600">Trang Du học Úc nhưng khối tin tức hiện bài Phần Lan, Canada</td>
+                <td class="p-3 text-slate-800">Lọc bài viết theo chuyên mục tương ứng với từng quốc gia</td>
+                <td class="p-3"><span class="badge-p2 text-[11px] font-bold px-2 py-0.5 rounded whitespace-nowrap">P2 (TB)</span></td>
+                <td class="p-3 whitespace-nowrap"><a href="https://www.visagbluesea.com/study-in-australia" target="_blank" class="text-emerald-600 hover:underline font-medium inline-flex items-center gap-1">Trang Úc <i data-lucide="external-link" class="w-3 h-3"></i></a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 2. GIAO DIỆN DI ĐỘNG (MOBILE CARD STACK) -->
+        <div class="md:hidden space-y-3" id="mobile-action-cards">
+          <!-- Card 1 -->
+          <div class="mobile-card-item bg-white p-3.5 rounded-xl border border-slate-200 shadow-2xs space-y-2" data-prio="P0">
+            <div class="flex items-center justify-between">
+              <span class="font-mono font-bold text-xs text-slate-900">F-UI-01</span>
+              <span class="badge-p0 text-[10px] font-bold px-2 py-0.5 rounded">P0 Khẩn Cấp</span>
+            </div>
+            <h4 class="font-bold text-xs text-slate-900">Header 3 Hotline rối mắt & Call now mất số</h4>
+            <p class="text-[11px] text-slate-600 leading-relaxed"><strong>Khắc phục:</strong> Giữ lại 1 Hotline chính (0901.830.827) + 1 Zalo, có nhãn rõ ràng.</p>
+            <div class="pt-1 flex items-center justify-between border-t border-slate-100">
+              <span class="text-[10px] text-slate-400">Header Desktop</span>
+              <a href="https://www.visagbluesea.com/" target="_blank" class="text-emerald-600 text-xs font-semibold inline-flex items-center gap-1">Soi lỗi ↗</a>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="mobile-card-item bg-white p-3.5 rounded-xl border border-slate-200 shadow-2xs space-y-2" data-prio="P0">
+            <div class="flex items-center justify-between">
+              <span class="font-mono font-bold text-xs text-slate-900">F-UI-02</span>
+              <span class="badge-p0 text-[10px] font-bold px-2 py-0.5 rounded">P0 Khẩn Cấp</span>
+            </div>
+            <h4 class="font-bold text-xs text-slate-900">Sót chữ Tây Ban Nha "Acerca de" trên EB-5</h4>
+            <p class="text-[11px] text-slate-600 leading-relaxed"><strong>Khắc phục:</strong> Đổi H1 thành "Đầu Tư Định Cư Mỹ EB-5 — Nhận Thẻ Xanh Cho Cả Gia Đình".</p>
+            <div class="pt-1 flex items-center justify-between border-t border-slate-100">
+              <span class="text-[10px] text-slate-400">Trang EB-5 20 tỷ</span>
+              <a href="https://www.visagbluesea.com/us-green-card-eb-5" target="_blank" class="text-emerald-600 text-xs font-semibold inline-flex items-center gap-1">Soi lỗi ↗</a>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="mobile-card-item bg-white p-3.5 rounded-xl border border-slate-200 shadow-2xs space-y-2" data-prio="P0">
+            <div class="flex items-center justify-between">
+              <span class="font-mono font-bold text-xs text-slate-900">F-UI-03</span>
+              <span class="badge-p0 text-[10px] font-bold px-2 py-0.5 rounded">P0 Khẩn Cấp</span>
+            </div>
+            <h4 class="font-bold text-xs text-slate-900">Thiếu Mobile Sticky Action Bar</h4>
+            <p class="text-[11px] text-slate-600 leading-relaxed"><strong>Khắc phục:</strong> Gắn thanh cố định đáy: 2 nút [Gọi Ngay 24/7] + [Chat Zalo] vừa ngón cái.</p>
+            <div class="pt-1 flex items-center justify-between border-t border-slate-100">
+              <span class="text-[10px] text-slate-400">Mobile Toàn Site</span>
+              <a href="https://www.visagbluesea.com/" target="_blank" class="text-emerald-600 text-xs font-semibold inline-flex items-center gap-1">Soi lỗi ↗</a>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="mobile-card-item bg-white p-3.5 rounded-xl border border-slate-200 shadow-2xs space-y-2" data-prio="P0">
+            <div class="flex items-center justify-between">
+              <span class="font-mono font-bold text-xs text-slate-900">F-UI-04</span>
+              <span class="badge-p0 text-[10px] font-bold px-2 py-0.5 rounded">P0 Khẩn Cấp</span>
+            </div>
+            <h4 class="font-bold text-xs text-slate-900">Form tách riêng ô Tên & Họ, bắt email</h4>
+            <p class="text-[11px] text-slate-600 leading-relaxed"><strong>Khắc phục:</strong> Rút gọn còn 3 ô: Họ tên, SĐT Zalo, Nhu cầu; cam kết phản hồi sau 15 phút.</p>
+            <div class="pt-1 flex items-center justify-between border-t border-slate-100">
+              <span class="text-[10px] text-slate-400">Trang Liên Hệ</span>
+              <a href="https://www.visagbluesea.com/contact-us" target="_blank" class="text-emerald-600 text-xs font-semibold inline-flex items-center gap-1">Soi lỗi ↗</a>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="mobile-card-item bg-white p-3.5 rounded-xl border border-slate-200 shadow-2xs space-y-2" data-prio="P0">
+            <div class="flex items-center justify-between">
+              <span class="font-mono font-bold text-xs text-slate-900">F-SEO-01</span>
+              <span class="badge-p0 text-[10px] font-bold px-2 py-0.5 rounded">P0 Khẩn Cấp</span>
+            </div>
+            <h4 class="font-bold text-xs text-slate-900">Trang Golden Visa khuyết thẻ H1</h4>
+            <p class="text-[11px] text-slate-600 leading-relaxed"><strong>Khắc phục:</strong> Thêm H1: "Chương Trình Golden Visa Định Cư Hy Lạp & Síp 2026".</p>
+            <div class="pt-1 flex items-center justify-between border-t border-slate-100">
+              <span class="text-[10px] text-slate-400">Trang EU Visa</span>
+              <a href="https://www.visagbluesea.com/eu-golden-visa" target="_blank" class="text-emerald-600 text-xs font-semibold inline-flex items-center gap-1">Soi lỗi ↗</a>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="mobile-card-item bg-white p-3.5 rounded-xl border border-slate-200 shadow-2xs space-y-2" data-prio="P0">
+            <div class="flex items-center justify-between">
+              <span class="font-mono font-bold text-xs text-slate-900">F-TRK-01</span>
+              <span class="badge-p0 text-[10px] font-bold px-2 py-0.5 rounded">P0 Khẩn Cấp</span>
+            </div>
+            <h4 class="font-bold text-xs text-slate-900">Chưa gắn thẻ đo lường Google Ads</h4>
+            <p class="text-[11px] text-slate-600 leading-relaxed"><strong>Khắc phục:</strong> Cài đặt theo dõi tự động cho nút Gọi, nút Zalo và Form gửi thông tin.</p>
+            <div class="pt-1 flex items-center justify-between border-t border-slate-100">
+              <span class="text-[10px] text-slate-400">GTM Conversion</span>
+              <span class="text-slate-400 text-xs">Cài trong GTM</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= SECTION 5: KIẾN TRÚC SITEMAP & RFQ HUB ================= -->
+      <section id="kien-truc-sitemap" class="space-y-6">
+        <div class="border-b border-slate-200 pb-3">
+          <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+            <span class="w-2.5 h-6 bg-indigo-600 rounded-full inline-block"></span>
+            5. Kiến Trúc Sitemap Mục Tiêu & Định Vị Trung Tâm Báo Giá (RFQ Hub)
+          </h2>
+          <p class="text-slate-500 text-xs sm:text-sm mt-0.5">Phương án tái cấu trúc đường dẫn rõ nghĩa và phân tầng trang giúp tối ưu chi phí thiết kế.</p>
+        </div>
+
+        <!-- Tư vấn tối ưu chi phí thiết kế web -->
+        <div class="bg-indigo-50/70 border border-indigo-200 rounded-xl p-4 sm:p-5 space-y-3">
+          <h3 class="text-sm font-bold text-indigo-950 flex items-center gap-2">
+            <i data-lucide="info" class="w-4 h-4 text-indigo-600 shrink-0"></i>
+            Tư Vấn Tối Ưu Chi Phí Thiết Kế Website: Phân Biệt Landing Page vs Bài Viết Chuẩn SEO
+          </h3>
+          <p class="text-xs sm:text-sm text-indigo-900 leading-relaxed">
+            Để tiết kiệm chi phí xây dựng website mà vẫn đạt hiệu quả chốt đơn tối đa, doanh nghiệp nên phân tách 2 loại trang rõ rệt:
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-2">
+            <div class="bg-white p-3.5 rounded-lg border border-indigo-100 shadow-2xs">
+              <span class="text-xs font-bold text-emerald-700 uppercase tracking-wider block mb-1">1. Nhóm Trang Đích Chốt Đơn (Landing Page)</span>
+              <p class="text-xs text-slate-600 leading-relaxed">Gồm: <strong>Trang Chủ, RFQ Hub Báo Giá, Trang Định Cư EB-5, Golden Visa</strong>. Đây là các trang đón tiếp khách quảng cáo, cần thiết kế tỉ mỉ từng khối để tăng tối đa cuộc gọi.</p>
+            </div>
+            <div class="bg-white p-3.5 rounded-lg border border-indigo-100 shadow-2xs">
+              <span class="text-xs font-bold text-blue-700 uppercase tracking-wider block mb-1">2. Nhóm Bài Viết Chuẩn SEO (Tin Tức CMS)</span>
+              <p class="text-xs text-slate-600 leading-relaxed">Gồm: <strong>79 bài viết cẩm nang du học, học bổng, thay đổi luật visa</strong>. Chỉ cần lập trình 01 khung mẫu chuẩn SEO duy nhất, nhân sự tự đăng bài giúp <strong>tiết kiệm 60% chi phí lập trình</strong>.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Định vị RFQ Hub vs Trang Chi Tiết Sản Phẩm -->
+        <div class="bg-white p-4 sm:p-5 rounded-xl border border-slate-200 shadow-2xs space-y-4">
+          <h3 class="text-sm sm:text-base font-bold text-slate-900">Định Vị Trung Tâm Báo Giá Dự Án (RFQ Hub) — Điểm Chốt Đơn Tối Hậu</h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Thay vì để khách hàng đọc bài viết dài rồi thoát trang do không biết chi phí, RFQ Hub là nơi <strong>So Sánh Quyền Lợi & Báo Phí Trọn Gói</strong>:
+          </p>
+          
+          <!-- Mockup Showcase Image for RFQ Hub -->
+          <div class="border border-slate-200 rounded-xl overflow-hidden bg-slate-50 relative group cursor-pointer" onclick="openLightbox('Bang_Chung_Hinh_Anh/phuong_an_mau_rfq_hub.jpg', 'Phương án mẫu: Trung Tâm Báo Giá RFQ Hub so sánh 3 gói định cư chiến lược và Form tải dự toán chi phí PDF')">
+            <img src="Bang_Chung_Hinh_Anh/phuong_an_mau_rfq_hub.jpg" alt="Phương án mẫu RFQ Hub" class="w-full h-auto object-cover aspect-[16/10] group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute inset-0 bg-slate-900/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-bold gap-1.5 backdrop-blur-xs">
+              <i data-lucide="maximize-2" class="w-4 h-4"></i>
+              <span>Nhấp để phóng to chi tiết RFQ Hub</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+            <div class="p-3 bg-slate-50 rounded-lg border border-slate-200">
+              <span class="font-bold text-slate-900 block mb-1">Mỹ EB-5 (Thẻ Xanh Cả Nhà)</span>
+              <p class="text-slate-600 leading-relaxed">Đầu tư: 800,000 USD<br>Thời gian: 2 – 3 năm<br>Quyền lợi: Thường trú nhân Mỹ vĩnh viễn, học phí công lập ưu đãi.</p>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-lg border border-slate-200">
+              <span class="font-bold text-slate-900 block mb-1">Hy Lạp Golden Visa</span>
+              <p class="text-slate-600 leading-relaxed">Đầu tư: 250,000 – 400,000 EUR<br>Thời gian: 3 – 6 tháng<br>Quyền lợi: Tự do đi lại 29 nước khối Schengen không cần visa.</p>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-lg border border-slate-200">
+              <span class="font-bold text-slate-900 block mb-1">Síp (Cyprus) PR</span>
+              <p class="text-slate-600 leading-relaxed">Đầu tư: 300,000 EUR BĐS<br>Thời gian: 6 tháng<br>Quyền lợi: Thẻ thường trú nhân vĩnh viễn cho 3 thế hệ gia đình.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bảng ánh xạ URL Cũ sang Mới -->
+        <div class="overflow-x-auto bg-white rounded-xl border border-slate-200 shadow-2xs">
+          <div class="p-3.5 bg-slate-100 border-b border-slate-200 font-bold text-xs text-slate-800">
+            Ma Trận Xử Lý & Chuẩn Hóa Đường Dẫn (URL Mapping Matrix)
+          </div>
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="bg-slate-50 border-b border-slate-200 text-slate-700 font-bold">
+                <th class="p-3">Đường Dẫn Cũ</th>
+                <th class="p-3">Hành Động Kỹ Thuật</th>
+                <th class="p-3">Đường Dẫn Chuẩn Mới</th>
+                <th class="p-3">Mục Tiêu Chuyển Đổi</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200 text-slate-700">
+              <tr>
+                <td class="p-3 font-mono text-slate-600">/us-green-card-eb-5</td>
+                <td class="p-3 font-semibold text-emerald-700">Giữ nguyên hoặc 301</td>
+                <td class="p-3 font-mono text-slate-900">/dinh-cu-my-eb5</td>
+                <td class="p-3">Điền form nhận lộ trình tài chính EB-5</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-mono text-slate-600">/eu-golden-visa vs /eu-golden-visas</td>
+                <td class="p-3 font-semibold text-amber-700">Gộp 301 về 1 trang</td>
+                <td class="p-3 font-mono text-slate-900">/golden-visa-chau-au</td>
+                <td class="p-3">Tải cẩm nang so sánh thuế Síp vs Hy Lạp</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-mono text-slate-600">/golden-visa-greece & /greece-investment-visa</td>
+                <td class="p-3 font-semibold text-amber-700">301 Redirect trang trùng</td>
+                <td class="p-3 font-mono text-slate-900">/golden-visa-hy-lap</td>
+                <td class="p-3">Đăng ký xem danh mục dự án BĐS Hy Lạp</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-mono text-slate-600">/copy-of-malta-investment-visa-1</td>
+                <td class="p-3 font-semibold text-red-700">Xóa bỏ trang rác</td>
+                <td class="p-3 font-mono text-slate-400">HTTP 410 Gone / 301 /malta</td>
+                <td class="p-3">Triệt tiêu lỗi sitemap</td>
+              </tr>
+              <tr>
+                <td class="p-3 font-mono text-slate-600">(Chưa có)</td>
+                <td class="p-3 font-semibold text-blue-700">Xây dựng trang mới</td>
+                <td class="p-3 font-mono text-slate-900">/trung-tam-bao-gia-rfq</td>
+                <td class="p-3">Tải bảng dự toán chi phí trọn gói PDF</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================= SECTION 6: BLUEPRINT SECTIONS TRANG LÕI ================= -->
+      <section id="blueprint-sections" class="space-y-6">
+        <div class="border-b border-slate-200 pb-3">
+          <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+            <span class="w-2.5 h-6 bg-blue-600 rounded-full inline-block"></span>
+            6. Cấu Trúc Bố Cục Từng Khối (Blueprint Section-by-Section)
+          </h2>
+          <p class="text-slate-500 text-xs sm:text-sm mt-0.5">Mô hình kiến trúc cuộn dọc liên tục (Continuous Layout) chuẩn quốc tế cho trang Landing Page đón quảng cáo.</p>
+        </div>
+
+        <div class="bg-white rounded-xl border border-slate-200 p-4 sm:p-5 space-y-4 shadow-2xs">
+          <div class="space-y-3">
+            <div class="flex items-start gap-3 p-3 bg-emerald-50 rounded-lg border border-emerald-200">
+              <span class="w-6 h-6 rounded-full bg-emerald-600 text-white font-black text-xs flex items-center justify-center shrink-0 mt-0.5">1</span>
+              <div>
+                <h4 class="text-xs sm:text-sm font-bold text-slate-900">Khối 1: Header Tối Giản & Thanh Định Vị Thương Hiệu (Top Bar)</h4>
+                <p class="text-xs text-slate-600 mt-0.5 leading-relaxed">Logo GBlueSea sắc nét • 1 Hotline tư vấn 24/7 (0901.830.827) • Nút Chat Zalo trực tiếp • Menu rút gọn dẫn đến các trang di trú chính.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3 p-3 bg-slate-50 rounded-lg border border-slate-200">
+              <span class="w-6 h-6 rounded-full bg-slate-800 text-white font-black text-xs flex items-center justify-center shrink-0 mt-0.5">2</span>
+              <div>
+                <h4 class="text-xs sm:text-sm font-bold text-slate-900">Khối 2: Hero Banner — Tuyên Bố Giá Trị & Form Thẩm Định Nhanh</h4>
+                <p class="text-xs text-slate-600 mt-0.5 leading-relaxed">Headline định vị tỷ lệ đậu 99.2% • 3 Thẻ tín nhiệm (5,300+ Khách hàng, 15 năm kinh nghiệm, văn phòng 5 nước) • Form 3 trường nhận kết quả trong 15 phút.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3 p-3 bg-slate-50 rounded-lg border border-slate-200">
+              <span class="w-6 h-6 rounded-full bg-slate-800 text-white font-black text-xs flex items-center justify-center shrink-0 mt-0.5">3</span>
+              <div>
+                <h4 class="text-xs sm:text-sm font-bold text-slate-900">Khối 3: Bảng So Sánh Quyền Lợi & Mức Đầu Tư 3 Chương Trình Chiến Lược</h4>
+                <p class="text-xs text-slate-600 mt-0.5 leading-relaxed">Đối chiếu trực diện: Mỹ EB-5 vs Hy Lạp vs Síp (Mức vốn, tiến độ thẻ xanh, điều kiện cư trú, quyền lợi gia đình) • Nút tải bảng dự toán PDF.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3 p-3 bg-slate-50 rounded-lg border border-slate-200">
+              <span class="w-6 h-6 rounded-full bg-slate-800 text-white font-black text-xs flex items-center justify-center shrink-0 mt-0.5">4</span>
+              <div>
+                <h4 class="text-xs sm:text-sm font-bold text-slate-900">Khối 4: Hội Đồng Luật Sư Di Trú & Năng Lực Thụ Lý Hồ Sơ Thực Tế</h4>
+                <p class="text-xs text-slate-600 mt-0.5 leading-relaxed">Hình ảnh luật sư trưởng, mã số chứng chỉ hành nghề di trú quốc tế • Quy trình bảo lãnh an toàn vốn đầu tư và tiền thẩm định 3 vòng.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3 p-3 bg-slate-50 rounded-lg border border-slate-200">
+              <span class="w-6 h-6 rounded-full bg-slate-800 text-white font-black text-xs flex items-center justify-center shrink-0 mt-0.5">5</span>
+              <div>
+                <h4 class="text-xs sm:text-sm font-bold text-slate-900">Khối 5: Câu Chuyện Thành Công & Bằng Chứng Visa Đã Được Cấp</h4>
+                <p class="text-xs text-slate-600 mt-0.5 leading-relaxed">Hình ảnh visa/thẻ xanh thực tế đã che thông tin nhạy cảm của khách hàng • Video phỏng vấn cảm nhận khách hàng nhận visa thành công.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3 p-3 bg-slate-50 rounded-lg border border-slate-200">
+              <span class="w-6 h-6 rounded-full bg-slate-800 text-white font-black text-xs flex items-center justify-center shrink-0 mt-0.5">6</span>
+              <div>
+                <h4 class="text-xs sm:text-sm font-bold text-slate-900">Khối 6: Chân Trang Pháp Lý & Bản Đồ 5 Trụ Sở Toàn Cầu</h4>
+                <p class="text-xs text-slate-600 mt-0.5 leading-relaxed">Giấy phép hoạt động tư vấn • Bản đồ Google Maps chỉ đường văn phòng TP.HCM, Hà Nội, Đà Nẵng, Mỹ và Hy Lạp • Cam kết bảo mật thông tin.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3 p-3 bg-emerald-100/70 rounded-lg border border-emerald-300">
+              <span class="w-6 h-6 rounded-full bg-emerald-700 text-white font-black text-xs flex items-center justify-center shrink-0 mt-0.5">★</span>
+              <div>
+                <h4 class="text-xs sm:text-sm font-bold text-emerald-950">Khối 7: Thanh Cố Định Đáy Màn Hình Di Động (Mobile Sticky Bar)</h4>
+                <p class="text-xs text-emerald-900 mt-0.5 leading-relaxed">2 Nút bấm lớn vừa ngón tay cái: [📞 Gọi Ngay: 0901.830.827] và [💬 Nhắn Zalo Tư Vấn 24/7].</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= SECTION 7: LƯU Ý GOOGLE ADS (Ở ĐÁY THEO QUY CHUẨN) ================= -->
+      <section id="luu-y-google-ads" class="space-y-6 pt-6 border-t-2 border-slate-300">
+        <div class="border-b border-slate-200 pb-3">
+          <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full text-xs font-bold bg-slate-100 text-slate-700 mb-2">
+            <i data-lucide="info" class="w-3.5 h-3.5 text-slate-600"></i>
+            <span>Phần Mở Rộng Kỹ Thuật (Đặt Ở Đáy Báo Cáo)</span>
+          </div>
+          <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+            <span class="w-2.5 h-6 bg-emerald-600 rounded-full inline-block"></span>
+            7. Khuyến Nghị Vận Hành Chiến Dịch Google Search Ads
+          </h2>
+          <p class="text-slate-500 text-xs sm:text-sm mt-0.5">Các lưu ý quan trọng giúp doanh nghiệp kiểm soát ngân sách và tránh lãng phí tiền quảng cáo.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2 shadow-2xs">
+            <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+              Phân Nhóm Từ Khóa Theo Từng Quốc Gia
+            </h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Tách riêng nhóm quảng cáo Mỹ EB-5, Hy Lạp và Du học Úc. Tuyệt đối không gom chung vào 1 nhóm để tránh làm giảm điểm chất lượng quảng cáo.
+            </p>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2 shadow-2xs">
+            <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+              Chặn Ngay Các Từ Khóa Không Tạo Ra Khách
+            </h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Thêm danh sách từ khóa phủ định để chặn các lượt bấm tốn tiền nhưng không sinh đơn: "miễn phí", "kinh nghiệm tự làm", "diễn đàn", "lừa đảo", "việc làm chui".
+            </p>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2 shadow-2xs">
+            <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+              Chỉ Tính Chuyển Đổi Khi Có Khách Gọi Thật
+            </h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Cài đặt đo lường chính xác các lượt bấm gọi hotline và gửi thông tin tư vấn. Giúp hệ thống quảng cáo tự động tìm kiếm đúng người có nhu cầu thực.
+            </p>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-2 shadow-2xs">
+            <h4 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+              Chỉ Chạy Quảng Cáo Khi Đã Sửa Xong Web
+            </h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Ưu tiên sửa xong 6 lỗi khẩn cấp P0 (chữ Acerca de, nút gọi điện thoại và đo lường) trước khi đổ tiền chạy quảng cáo để tránh lãng phí ngân sách.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-4 bg-emerald-50 rounded-xl border border-emerald-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <span class="font-bold text-xs sm:text-sm text-emerald-950 block">Dữ Liệu Hành Động Đã Sẵn Sàng Triển Khai</span>
+            <span class="text-xs text-emerald-800">Toàn bộ 14 đầu việc kỹ thuật chi tiết đã được đóng gói trong file Excel đính kèm.</span>
+          </div>
+          <a href="Du_Lieu_Trien_Khai_Chi_Tiet_visagbluesea.com.xlsx" download class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-lg shadow-sm whitespace-nowrap shrink-0 flex items-center justify-center gap-1.5 min-h-[38px]">
+            <i data-lucide="download" class="w-4 h-4"></i>
+            <span>Tải Excel 6 Sheets</span>
+          </a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ================= MOBILE BOTTOM NAVIGATION (3-Tab Native Easy AI) ================= -->
+  <div class="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 px-4 py-2 flex items-center justify-around shadow-lg">
+    <a href="#tong-quan" class="flex flex-col items-center gap-1 text-[11px] font-semibold text-slate-600 hover:text-emerald-600 min-h-[40px] justify-center">
+      <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+      <span>Tổng Quan</span>
+    </a>
+    <a href="#diem-nghen-chuyen-doi" class="flex flex-col items-center gap-1 text-[11px] font-semibold text-slate-600 hover:text-red-600 min-h-[40px] justify-center">
+      <i data-lucide="alert-octagon" class="w-5 h-5 text-red-500"></i>
+      <span>Điểm Nghẽn</span>
+    </a>
+    <a href="#doi-sanh-truoc-sau" class="flex flex-col items-center gap-1 text-[11px] font-semibold text-slate-600 hover:text-emerald-600 min-h-[40px] justify-center">
+      <i data-lucide="split-square-vertical" class="w-5 h-5 text-emerald-600"></i>
+      <span>Trước & Sau</span>
+    </a>
+    <a href="#bang-uu-tien-p0-p3" class="flex flex-col items-center gap-1 text-[11px] font-semibold text-slate-600 hover:text-amber-600 min-h-[40px] justify-center">
+      <i data-lucide="check-square" class="w-5 h-5 text-amber-500"></i>
+      <span>Ưu Tiên</span>
+    </a>
+  </div>
+
+  <!-- ================= LIGHTBOX MODAL ================= -->
+  <div id="lightbox-modal" class="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="relative max-w-5xl w-full max-h-[92vh] flex flex-col items-center">
+      <button onclick="closeLightbox()" class="absolute -top-12 right-0 text-white hover:text-emerald-400 font-extrabold text-2xl p-2 cursor-pointer transition-colors" title="Đóng (Esc)">
+        ✕ Đóng (Esc)
+      </button>
+      <div class="w-full overflow-auto max-h-[82vh] rounded-xl flex items-center justify-center bg-black/40 p-2">
+        <img id="lightbox-img" src="" alt="Chi tiết ảnh" class="max-h-[80vh] w-auto max-w-full object-contain rounded-lg shadow-2xl">
+      </div>
+      <p id="lightbox-caption" class="text-white text-xs sm:text-sm text-center mt-3 font-medium bg-slate-900/80 px-4 py-2 rounded-full border border-slate-700 max-w-2xl"></p>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    lucide.createIcons();
+
+    function openLightbox(src, caption) {
+      const modal = document.getElementById('lightbox-modal');
+      const img = document.getElementById('lightbox-img');
+      const cap = document.getElementById('lightbox-caption');
+      img.src = src;
+      cap.innerText = caption || 'Chi tiết hình ảnh thẩm định';
+      modal.classList.remove('hidden');
+      document.body.classList.add('lightbox-open');
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('lightbox-modal');
+      modal.classList.add('hidden');
+      document.body.classList.remove('lightbox-open');
+    }
+
+    document.getElementById('lightbox-modal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      }
+    });
+
+    function filterFindings(cat, btn) {
+      const pills = document.querySelectorAll('.filter-pill');
+      pills.forEach(p => p.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.finding-card');
+      cards.forEach(card => {
+        if (cat === 'all') {
+          card.style.display = 'block';
+        } else {
+          const cardCats = card.getAttribute('data-cat') || '';
+          if (cardCats.includes(cat)) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        }
+      });
+    }
+
+    function filterTablePriority(prio, btn) {
+      const btns = document.querySelectorAll('.table-filter-btn');
+      btns.forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      const rows = document.querySelectorAll('.table-row-item');
+      rows.forEach(r => {
+        if (prio === 'all' || r.getAttribute('data-prio') === prio) {
+          r.style.display = '';
+        } else {
+          r.style.display = 'none';
+        }
+      });
+
+      const mcards = document.querySelectorAll('.mobile-card-item');
+      mcards.forEach(c => {
+        if (prio === 'all' || c.getAttribute('data-prio') === prio) {
+          c.style.display = 'block';
+        } else {
+          c.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
+"""
+
+with open("Bao_Cao_Trinh_Bay_Khach_Hang_visagbluesea.com.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+with open("index.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+print("Đã biên tập câu chữ toàn diện theo chuẩn Business-First Language và đồng bộ index.html!")
