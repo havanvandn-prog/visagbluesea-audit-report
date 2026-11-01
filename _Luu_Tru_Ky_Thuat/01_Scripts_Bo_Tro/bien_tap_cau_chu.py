@@ -103,29 +103,20 @@ html_content = """<!DOCTYPE html>
   <!-- ================= TOPBAR (56px h-14 Chuẩn Easy AI) ================= -->
   <header class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 h-14 flex items-center justify-between px-3 sm:px-6 shadow-2xs">
     
-    <!-- Left: Brand & Live Status -->
+    <!-- Left: Brand & Domain link (Clean, Zero Meaningless Status Pills) -->
     <div class="flex items-center gap-3">
       <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-600 to-emerald-400 flex items-center justify-center text-white font-extrabold text-sm shadow-sm shrink-0">
         GB
       </div>
-      <div class="flex items-center gap-2.5">
-        <div>
-          <span class="font-extrabold text-slate-900 text-xs sm:text-sm tracking-tight block">GBlueSea Audit Portal</span>
-          <span class="text-[11px] text-slate-500 hidden sm:inline">Đối soát: <a href="https://www.visagbluesea.com/" target="_blank" class="text-emerald-600 hover:underline font-medium">visagbluesea.com ↗</a></span>
-        </div>
-        <div class="hidden md:flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-[11px] font-bold text-emerald-700 whitespace-nowrap shrink-0">
-          <span class="relative flex h-2 w-2">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-          </span>
-          <span>Thẩm Định Độc Lập 2026</span>
-        </div>
+      <div>
+        <span class="font-extrabold text-slate-900 text-xs sm:text-sm tracking-tight block">GBlueSea Audit Portal</span>
+        <span class="text-[11px] text-slate-500 hidden sm:inline">Đối soát: <a href="https://www.visagbluesea.com/" target="_blank" class="text-emerald-600 hover:underline font-medium">visagbluesea.com ↗</a></span>
       </div>
     </div>
 
-    <!-- Right: Clean Status Info (No CTA on Header) -->
-    <div class="hidden sm:flex items-center gap-2 text-xs font-semibold text-slate-400">
-      <span>Báo Cáo Thẩm Định Độc Lập</span>
+    <!-- Right: Clean domain reference -->
+    <div class="hidden sm:flex items-center gap-2 text-xs font-medium text-slate-400">
+      <span>visagbluesea.com</span>
     </div>
   </header>
 

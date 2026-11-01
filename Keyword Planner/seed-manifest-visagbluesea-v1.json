@@ -1,0 +1,164 @@
+{
+  "schema": "seed-pack-v1",
+  "version": "1.0",
+  "project": {
+    "name": "Visa GBlueSea",
+    "website": "https://www.visagbluesea.com"
+  },
+  "packs": [
+    {
+      "id": "PACK_01",
+      "order": 1,
+      "name": "Định Cư Mỹ Diện Đầu Tư EB-5",
+      "keywords": [
+        "định cư mỹ eb5",
+        "visa eb5",
+        "thẻ xanh mỹ diện đầu tư",
+        "đầu tư định cư mỹ",
+        "dự án eb5",
+        "trung tâm vùng eb5",
+        "luật sư di trú mỹ",
+        "chi phí định cư mỹ eb5"
+      ]
+    },
+    {
+      "id": "PACK_02",
+      "order": 2,
+      "name": "Định Cư Châu Âu Golden Visa (Hy Lạp, Síp, Malta)",
+      "keywords": [
+        "golden visa châu âu",
+        "định cư hy lạp",
+        "golden visa hy lạp",
+        "định cư síp",
+        "thẻ xanh síp",
+        "định cư malta",
+        "định cư bồ đào nha",
+        "mua nhà định cư châu âu",
+        "bất động sản định cư châu âu"
+      ]
+    },
+    {
+      "id": "PACK_03",
+      "order": 3,
+      "name": "Định Cư Úc, Canada & Quốc Tịch Doanh Nhân",
+      "keywords": [
+        "định cư úc diện đầu tư",
+        "visa 188 úc",
+        "định cư canada diện đầu tư",
+        "start up visa canada",
+        "đầu tư định cư canada",
+        "quốc tịch nauru",
+        "tư vấn định cư úc",
+        "tư vấn định cư canada"
+      ]
+    },
+    {
+      "id": "PACK_04",
+      "order": 4,
+      "name": "Du Học Úc & New Zealand (Học Bổng, Nghề, Định Cư)",
+      "keywords": [
+        "du học úc",
+        "học bổng du học úc",
+        "chi phí du học úc",
+        "tư vấn du học úc",
+        "du học nghề úc",
+        "du học úc vừa học vừa làm",
+        "du học new zealand",
+        "học bổng du học new zealand"
+      ]
+    },
+    {
+      "id": "PACK_05",
+      "order": 5,
+      "name": "Du Học Bắc Mỹ (Mỹ & Canada - Chi Phí, Học Bổng, Visa)",
+      "keywords": [
+        "du học mỹ",
+        "học bổng du học mỹ",
+        "chi phí du học mỹ",
+        "tư vấn du học mỹ",
+        "du học canada",
+        "học bổng du học canada",
+        "chi phí du học canada",
+        "du học định cư canada",
+        "chứng minh tài chính du học mỹ"
+      ]
+    },
+    {
+      "id": "PACK_06",
+      "order": 6,
+      "name": "Du Học Châu Âu & Phần Lan (Gia Đình, Miễn Học Phí, Nghề)",
+      "keywords": [
+        "du học phần lan",
+        "du học phần lan cả gia đình",
+        "học bổng du học phần lan",
+        "du học đức miễn học phí",
+        "du học thụy sĩ ngành khách sạn",
+        "du học anh",
+        "học bổng du học anh",
+        "du học nghề đức",
+        "du học singapore"
+      ]
+    },
+    {
+      "id": "PACK_07",
+      "order": 7,
+      "name": "Visa Lao Động & Việc Làm Quốc Tế (Úc, Canada, Mỹ, Châu Âu)",
+      "keywords": [
+        "visa lao động úc",
+        "visa 482 úc",
+        "visa tay nghề úc",
+        "visa làm việc canada",
+        "lao động định cư mỹ eb3",
+        "visa lao động châu âu",
+        "xuất khẩu lao động phần lan",
+        "thị thực việc làm úc"
+      ]
+    },
+    {
+      "id": "PACK_08",
+      "order": 8,
+      "name": "Visa Du Lịch & Thăm Thân Các Nước Phát Triển",
+      "keywords": [
+        "visa du lịch úc",
+        "xin visa du lịch úc",
+        "visa du lịch mỹ",
+        "thủ tục xin visa mỹ b1 b2",
+        "visa du lịch canada",
+        "visa thăm thân úc",
+        "visa schengen châu âu",
+        "visa du lịch anh quốc",
+        "super visa canada"
+      ]
+    },
+    {
+      "id": "PACK_09",
+      "order": 9,
+      "name": "Dịch Vụ Làm Visa & Bảo Lãnh Định Cư Thân Nhân",
+      "keywords": [
+        "dịch vụ làm visa uy tín",
+        "dịch vụ visa định cư",
+        "dịch vụ xin visa du lịch",
+        "công ty tư vấn định cư uy tín",
+        "bảo lãnh vợ chồng sang mỹ",
+        "bảo lãnh cha mẹ sang úc",
+        "gia hạn visa mỹ qua bưu điện",
+        "hồ sơ bảo lãnh định cư mỹ"
+      ]
+    },
+    {
+      "id": "PACK_10",
+      "order": 10,
+      "name": "So Sánh, Chi Phí & Điều Kiện Di Trú Toàn Cầu",
+      "keywords": [
+        "so sánh định cư síp và hy lạp",
+        "điều kiện đầu tư eb5",
+        "quyền lợi thẻ xanh châu âu",
+        "định cư nước nào dễ nhất",
+        "chính sách định cư phần lan",
+        "quốc tịch thứ hai",
+        "chi phí định cư cả gia đình",
+        "kinh nghiệm phỏng vấn visa mỹ"
+      ]
+    }
+  ]
+}
